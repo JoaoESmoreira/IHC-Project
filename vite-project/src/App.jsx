@@ -1,29 +1,37 @@
 
-import { useState } from 'react'
-import MapViewer from './components/MapViewer';
-import Move from './components/Move';
-import GPS from './components/GPS';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Start from './views/Start';
+import Map from './views/Map';
+import Home2 from './views/Home2';
+import Home3 from './views/Home3';
 import './App.css'
 
-function App() {
-    const [level, setLevel] = useState(0);
-    const [position, setPosition] = useState([40.186156,-8.416319]);
 
-    console.log(position);
+function App() {
 
     return (
         <>
-            <h1>AR Maps</h1>
+            <Router>
+                <Link to="/" >Start Page</Link>
+                <Link to="/map" >Game</Link>
+                <Link to="/home2" >Home2</Link>
+                <Link to="/home3" >Home3</Link>
 
-            <GPS setPosition={setPosition} />
-            <MapViewer position={position} />
-            <Move position={position} setPosition={setPosition} />
-
-            <div>
-                <label className="level">
-                    Steps equals to Level: {level}
-                </label>
-            </div>
+                <Switch>
+                    <Route exact path='/'>
+                        <Start />
+                    </Route>
+                    <Route path='/map'>
+                        <Map />
+                    </Route>
+                    <Route path='/home2'>
+                        <Home2 />
+                    </Route>
+                    <Route path='/home3'>
+                        <Home3 />
+                    </Route>
+                </Switch>
+            </Router>
         </>
     );
 }

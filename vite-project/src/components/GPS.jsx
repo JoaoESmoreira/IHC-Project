@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 function GPS({setPosition}) {
-    const [flag, setFlag] = useState(true);
+    const [flag, setFlag] = useState(true);     // dont use this flag to get updates of your locations
     if (flag && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (geoLocation) => {

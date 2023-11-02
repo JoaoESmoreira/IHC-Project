@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from "react";
 import { 
     MapContainer,
     TileLayer,
@@ -6,7 +7,6 @@ import {
     Marker,
     useMap,
 } from "react-leaflet";
-
 
 function ResetLocation({position}) {
     const map = useMap();
@@ -16,9 +16,9 @@ function ResetLocation({position}) {
     return null;
 }
 
-function MapViewer({position}) {
-    const deiCoordinates = [40.186513, -8.416024];
 
+function MapViewer({position, interestPoints}) {
+    
     return (
         <div>
             <MapContainer
@@ -29,10 +29,15 @@ function MapViewer({position}) {
                     attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     recenter={position}
                 />
-                <Marker position={deiCoordinates} />
+                {
+                    interestPoints.map((coord, index) =>(
+                        <Marker position={coord} key={index} />
+                    ))
+                }
                 <CircleMarker center={position} pathOptions={{ color: 'red' }} radius={6} />
                 <ResetLocation position={position} />
             </MapContainer>
+
         </div>
     )
 }

@@ -1,7 +1,7 @@
 
 import React from "react";
 
-function Move({position, setPosition}) {
+function Move({setPosition}) {
 
     const updatePosition = (incr1, incr2) => {
         setPosition((prevPos) => [prevPos[0] + incr1, prevPos[1] + incr2]);
