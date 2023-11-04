@@ -5,6 +5,7 @@ import MapViewer from '../components/MapViewer';
 import Move from '../components/Move';
 import GPS from '../components/GPS';
 
+import './Map.css'
 
 
 function EuclidianDistance(position1, position2) {
@@ -51,12 +52,14 @@ function Map() {
     const deecCoordinates = [40.186648, -8.416426];
     const interestPoints = [deiCoordinates, cantineCoordinates, deecCoordinates];
 
-    const [level, setLevel] = useState(0);
+    const [level, setLevel] = useState(1);
     const [lastTarget, setLastTarget] = useState([]);
 
     // ckeck if the person through by a checkpoint
     useEffect(() => {
         const tTarget = CloseToTarget(position, interestPoints);
+        // animaçao
+
         if (tTarget !== null && JSON.stringify(lastTarget) !== JSON.stringify(tTarget)) {
             console.log(level);
             setLastTarget(tTarget);
@@ -65,20 +68,22 @@ function Map() {
       }, [position]);
 
     return(
-        <div>
+        <div className='Map'>
             <h1>AR Maps</h1>
             {/*
-            Uncomment to get current position
+            // Uncomment to get current position
             <GPS setPosition={setPosition} />
             */}
-            <MapViewer position={position} interestPoints={interestPoints} />
-            <Move setPosition={setPosition} />
+            <MapViewer position={position} interestPoints={interestPoints} level={level} />
+            <h1>Status</h1>
 
             <div>
-                <label className="level">
+                <p className="level">
                     Steps equals to Level: {level}
-                </label>
+                </p>
             </div>
+
+            <Move setPosition={setPosition} />
         </div>
     )
 }

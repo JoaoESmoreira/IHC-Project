@@ -1,5 +1,4 @@
 
-import { useEffect, useState } from "react";
 import { 
     MapContainer,
     TileLayer,
@@ -17,8 +16,8 @@ function ResetLocation({position}) {
 }
 
 
-function MapViewer({position, interestPoints}) {
-    
+function MapViewer({position, interestPoints, level}) {
+
     return (
         <div>
             <MapContainer
@@ -32,7 +31,7 @@ function MapViewer({position, interestPoints}) {
                 {
                     interestPoints.map((coord, index) =>(
                         <Marker position={coord} key={index} />
-                    ))
+                    )).slice(0, level)
                 }
                 <CircleMarker center={position} pathOptions={{ color: 'red' }} radius={6} />
                 <ResetLocation position={position} />
