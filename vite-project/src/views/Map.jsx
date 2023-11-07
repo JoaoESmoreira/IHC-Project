@@ -28,44 +28,58 @@ function IsClose(position1, position2) {
     /**
      * Returns true if position1 is next to position2, false otherwise.
      */
-    return EuclidianDistance(position1, position2) <= 0.00005;
+    return EuclidianDistance(position1, position2) <= 0.00009;
 }
 
-function CloseToTarget(position, interestPoints) {
+function randomNumber(min, max, excludeValue) {
     /**
-     * Returns true if there is an element on interestPoints next to position.
+     * Returns a random value between min and max different from exclude value.
      */
-    for (let i = 0; i < interestPoints.length; i++) {
-        if (IsClose(position, interestPoints[i])) {
-            return interestPoints[i];
-        }
-    }
-    return null;
+    let randomValue = Math.floor(Math.random() * (max - min )) + min; 
+    do {
+        randomValue = Math.floor(Math.random() * (max - min)) + min; 
+    } while(randomValue === excludeValue)
+    return randomValue;
 }
 
 
-function Map() {
-    const [position, setPosition] = useState([40.186156,-8.416319]);
-
-    const deiCoordinates = [40.186513, -8.416024];
+function Map({numberRewards, setNumberRewards}) {
+    const deiCoordinates = [40.186390, -8.416174];
     const cantineCoordinates = [40.186296, -8.413942];
     const deecCoordinates = [40.186648, -8.416426];
-    const interestPoints = [deiCoordinates, cantineCoordinates, deecCoordinates];
+    const residenceCoordinates = [40.186816, -8.414771];
+    const auditoriumCoordinates = [40.186373, -8.412231];
+    const civilCoordinates = [40.185357, -8.415305];
+    const chemistryCoordinates = [40.186373, -8.417735];
+    const mechanicCoordinates = [40.184472, -8.412236];
+    const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
+        auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
 
-    const [level, setLevel] = useState(1);
-    const [lastTarget, setLastTarget] = useState([]);
+    const [level, setLevel]                     = useState(0);
+    const [position, setPosition]               = useState([40.186156,-8.416319]);
+    const [targetIndex, setTargetIndex]         = useState(0);
+    const [availablePoints, setAvailablePoints] = useState(2);
 
-    // ckeck if the person through by a checkpoint
+    // ckeck if the person is next to target
     useEffect(() => {
-        const tTarget = CloseToTarget(position, interestPoints);
-        // animaçao
-
-        if (tTarget !== null && JSON.stringify(lastTarget) !== JSON.stringify(tTarget)) {
-            console.log(level);
-            setLastTarget(tTarget);
+        if (IsClose(position, interestPoints[targetIndex])) {
             setLevel(level + 1);
+            
+            // reward and target system
+            if ((level+1)%3 === 0) {
+                setAvailablePoints(availablePoints + 1);
+            } else {
+                setNumberRewards(numberRewards + 1);
+            }
         }
-      }, [position]);
+    }, [position]);
+
+    // update target to achieve
+    useEffect(() => {
+        const randomValue = randomNumber(0, availablePoints, targetIndex);
+        setTargetIndex(randomValue);
+    }, [level]);
+
 
     return(
         <div className='Map'>
@@ -74,12 +88,21 @@ function Map() {
             // Uncomment to get current position
             <GPS setPosition={setPosition} />
             */}
-            <MapViewer position={position} interestPoints={interestPoints} level={level} />
+            <MapViewer position={position} target={interestPoints[targetIndex]}/>
             <h1>Status</h1>
 
             <div>
                 <p className="level">
                     Steps equals to Level: {level}
+                </p>
+                <p className="level">
+                    Available Points: {availablePoints}
+                </p>
+                <p className="level">
+                    Number of Available Rewards: {numberRewards}
+                </p>
+                <p className="level">
+                    Target: {targetIndex}
                 </p>
             </div>
 

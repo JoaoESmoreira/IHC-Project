@@ -1,5 +1,6 @@
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
 import Start from './views/Start';
 import Map from './views/Map';
 import Home2 from './views/Home2';
@@ -8,6 +9,7 @@ import './App.css'
 
 
 function App() {
+    const [numberRewards, setNumberRewards] = useState(0);
 
     return (
         <>
@@ -22,7 +24,7 @@ function App() {
                         <Start />
                     </Route>
                     <Route path='/map'>
-                        <Map />
+                        <Map numberRewards={numberRewards} setNumberRewards={setNumberRewards} />
                     </Route>
                     <Route path='/home2'>
                         <Home2 />

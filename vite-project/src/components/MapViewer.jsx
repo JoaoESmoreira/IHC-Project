@@ -7,6 +7,7 @@ import {
     useMap,
 } from "react-leaflet";
 
+
 function ResetLocation({position}) {
     const map = useMap();
     if (map) {
@@ -16,7 +17,7 @@ function ResetLocation({position}) {
 }
 
 
-function MapViewer({position, interestPoints, level}) {
+function MapViewer({position, target}) {
 
     return (
         <div>
@@ -29,9 +30,7 @@ function MapViewer({position, interestPoints, level}) {
                     recenter={position}
                 />
                 {
-                    interestPoints.map((coord, index) =>(
-                        <Marker position={coord} key={index} />
-                    )).slice(0, level)
+                    <Marker position={target} />
                 }
                 <CircleMarker center={position} pathOptions={{ color: 'red' }} radius={6} />
                 <ResetLocation position={position} />
