@@ -88,7 +88,7 @@ function Map({numberRewards, setNumberRewards}) {
             // Uncomment to get current position
             <GPS setPosition={setPosition} />
             */}
-            <MapViewer position={position} target={interestPoints[targetIndex]}/>
+            <MapViewer position={position} availablePoints={availablePoints} interestPoints={interestPoints} targetIndex={targetIndex} />
             <h1>Status</h1>
 
             <div>
