@@ -19,9 +19,11 @@ function ResetLocation({position}) {
 }
 
 
-function MapViewer({position, availablePoints, interestPoints, targetIndex}) {
+function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable}) {
 
-    return (
+    return newRewardAvailable || newTargetAvailable ? (
+        ""
+    ) : (
         <div>
             <MapContainer
                 center={position} zoom={17} style={{width: '100%', height: '70vh'}}

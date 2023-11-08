@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import MapViewer from '../components/MapViewer';
 import Move from '../components/Move';
 import GPS from '../components/GPS';
+import Popup from '../components/Popup';
 
 import './Map.css'
 
@@ -55,10 +56,12 @@ function Map({numberRewards, setNumberRewards}) {
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
 
-    const [level, setLevel]                     = useState(0);
-    const [position, setPosition]               = useState([40.186156,-8.416319]);
-    const [targetIndex, setTargetIndex]         = useState(0);
-    const [availablePoints, setAvailablePoints] = useState(2);
+    const [level, setLevel]                           = useState(0);
+    const [position, setPosition]                     = useState([40.186156,-8.416319]);
+    const [targetIndex, setTargetIndex]               = useState(0);
+    const [availablePoints, setAvailablePoints]       = useState(2);
+    const [newTargetAvailable, setNewTargetAvailable] = useState(false);
+    const [newRewardAvailable, setNewRewardAvailable] = useState(false);
 
     // ckeck if the person is next to target
     useEffect(() => {
@@ -68,8 +71,10 @@ function Map({numberRewards, setNumberRewards}) {
             // reward and target system
             if ((level+1)%3 === 0) {
                 setAvailablePoints(availablePoints + 1);
+                setNewTargetAvailable(true);
             } else {
                 setNumberRewards(numberRewards + 1);
+                setNewRewardAvailable(true);
             }
         }
     }, [position]);
@@ -88,7 +93,31 @@ function Map({numberRewards, setNumberRewards}) {
             // Uncomment to get current position
             <GPS setPosition={setPosition} />
             */}
-            <MapViewer position={position} availablePoints={availablePoints} interestPoints={interestPoints} targetIndex={targetIndex} />
+            {
+                newTargetAvailable ? (
+                    <Popup trigger={true} setPopup={setNewTargetAvailable}>
+                        <h1>A New Interest Point is Available</h1>
+                        <MapViewer className="map-container" position={position} availablePoints={availablePoints} interestPoints={interestPoints} targetIndex={availablePoints-1} popup={false} />
+                    </Popup>
+                ) : ""
+            }
+            {
+                newRewardAvailable ? (
+                    <Popup trigger={true} setPopup={setNewRewardAvailable}>
+                        <h1>Congrats!!</h1>
+                        <p>The new reward!</p>
+                    </Popup>
+                ) : ""
+            }
+            <MapViewer className="map-container"
+                        position={position} 
+                        availablePoints={availablePoints} 
+                        interestPoints={interestPoints} 
+                        targetIndex={targetIndex} 
+                        newTargetAvailable={newTargetAvailable} 
+                        newRewardAvailable={newRewardAvailable} 
+                        />
+
             <h1>Status</h1>
 
             <div>
