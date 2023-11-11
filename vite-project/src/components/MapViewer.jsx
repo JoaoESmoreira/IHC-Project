@@ -2,12 +2,12 @@
 import { 
     MapContainer,
     TileLayer,
-    CircleMarker,
     Marker,
     useMap,
 } from "react-leaflet";
 
-import {blueIcon, redIcon, greyIcon} from '../constants/icon'
+import {blueIcon, redIcon, greyIcon, catIcon} from '../constants/icon'
+import {React, useEffect, useRef} from "react";
 
 
 function ResetLocation({position}) {
@@ -18,8 +18,19 @@ function ResetLocation({position}) {
     return null;
 }
 
+function OpenPopup({position, message}) {
+    const map = useMap();
+    if (map) {
+        L.popup()
+            .setLatLng(position)
+            .setContent(message)
+            .openOn(map);
+    }
+    return null;
+}
 
-function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable}) {
+
+function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message}) {
 
     return newRewardAvailable || newTargetAvailable ? (
         ""
@@ -34,22 +45,25 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
                     recenter={position}
                 />
                 {
-                    interestPoints.map((coord, index) =>(
-                        index < availablePoints ? (
-                            index === targetIndex  ? (
-                                <Marker position={coord} key={index} icon={blueIcon} />
-                            ) : (
-                                <Marker position={coord} key={index} icon={redIcon} />
-                            )
-                        ) : (
-                            <Marker position={coord} key={index} icon={greyIcon} />
-                        )
-                    ))
+                    isPopup ? (
+                        interestPoints.map((coord, index) =>(
+                            index < availablePoints ? (
+                                index === targetIndex  ? (
+                                    <Marker position={coord} key={index} icon={blueIcon} />
+                                ) : (
+                                    <Marker position={coord} key={index} icon={redIcon} />
+                                )
+                            ) : ""
+                        ))
+                    ) : (
+                        <Marker position={interestPoints[targetIndex]} icon={blueIcon} >
+                            <OpenPopup position={[interestPoints[targetIndex][0]+0.00025, interestPoints[targetIndex][1]]} message={message}/>
+                        </Marker>
+                    )
                 }
-                <CircleMarker center={position} pathOptions={{ color: 'red' }} radius={6} />
+                <Marker position={position} icon={catIcon} />
                 <ResetLocation position={position} />
             </MapContainer>
-
         </div>
     )
 }

@@ -55,7 +55,9 @@ function Map({numberRewards, setNumberRewards}) {
     const mechanicCoordinates = [40.184472, -8.412236];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
+    const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
 
+    const [needs, setNeeds]                           = useState(0);
     const [level, setLevel]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
     const [targetIndex, setTargetIndex]               = useState(0);
@@ -81,8 +83,10 @@ function Map({numberRewards, setNumberRewards}) {
 
     // update target to achieve
     useEffect(() => {
-        const randomValue = randomNumber(0, availablePoints, targetIndex);
+        var randomValue = randomNumber(0, availablePoints, targetIndex);
         setTargetIndex(randomValue);
+        randomValue = randomNumber(0, messages.length, -1);
+        setNeeds(randomValue);
     }, [level]);
 
 
@@ -97,7 +101,13 @@ function Map({numberRewards, setNumberRewards}) {
                 newTargetAvailable ? (
                     <Popup trigger={true} setPopup={setNewTargetAvailable}>
                         <h1>A New Interest Point is Available</h1>
-                        <MapViewer className="map-container" position={position} availablePoints={availablePoints} interestPoints={interestPoints} targetIndex={availablePoints-1} popup={false} />
+                        <MapViewer className="map-container" 
+                                    position={position} 
+                                    availablePoints={availablePoints} 
+                                    interestPoints={interestPoints} 
+                                    targetIndex={availablePoints-1} 
+                                    isPopup={true}
+                                    />
                     </Popup>
                 ) : ""
             }
@@ -116,6 +126,7 @@ function Map({numberRewards, setNumberRewards}) {
                         targetIndex={targetIndex} 
                         newTargetAvailable={newTargetAvailable} 
                         newRewardAvailable={newRewardAvailable} 
+                        message={messages[needs]}
                         />
 
             <h1>Status</h1>

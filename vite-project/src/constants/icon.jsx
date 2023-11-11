@@ -4,6 +4,7 @@
  */
 
 import L from "leaflet";
+import customCat from '../assets/Cat_chewing/cat_chewing_1.png';
 
 const redIcon = L.icon({
   iconSize: [25, 41],
@@ -27,4 +28,11 @@ const greyIcon = L.icon({
   iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png",
 });
 
-export {blueIcon, redIcon, greyIcon};
+const catIcon = L.icon({
+  iconSize: [50, 50],
+  iconAnchor: [21, 41],
+  popupAnchor: [2, -40],
+  iconUrl: customCat,
+});
+
+export {blueIcon, redIcon, greyIcon, catIcon};
