@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import DogAnimation from '../DogAnimation'; // Importar o novo componente
+import CatAnimation from '../CatAnimation'; // Importar o novo componente
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function Start() {
     const [selectedOption, setSelectedOption] = useState('');
@@ -7,6 +10,46 @@ function Start() {
     const handleOptionChange = (option) => {
         setSelectedOption(option);
     };
+
+      const dogAnimationFrames = [
+        '/Cat_sleeping/cat_sleeping_1.png',
+        '/Cat_sleeping/cat_sleeping_2.png',
+        '/Cat_sleeping/cat_sleeping_3.png',
+        '/Cat_sleeping/cat_sleeping_4.png',
+        '/Cat_sleeping/cat_sleeping_5.png',
+        '/Cat_sleeping/cat_sleeping_6.png',
+        '/Cat_sleeping/cat_sleeping_7.png',
+        '/Cat_sleeping/cat_sleeping_8.png',
+        '/Cat_sleeping/cat_sleeping_9.png',
+        '/Cat_sleeping/cat_sleeping_10.png',
+        '/Cat_sleeping/cat_sleeping_11.png',
+        '/Cat_sleeping/cat_sleeping_12.png',
+        '/Cat_sleeping/cat_sleeping_13.png',
+        '/Cat_sleeping/cat_sleeping_14.png',
+        '/Cat_sleeping/cat_sleeping_15.png',
+        '/Cat_sleeping/cat_sleeping_16.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+    
+      const catAnimationFrames = [
+        '/Cat_sleeping/cat_sleeping_1.png',
+        '/Cat_sleeping/cat_sleeping_2.png',
+        '/Cat_sleeping/cat_sleeping_3.png',
+        '/Cat_sleeping/cat_sleeping_4.png',
+        '/Cat_sleeping/cat_sleeping_5.png',
+        '/Cat_sleeping/cat_sleeping_6.png',
+        '/Cat_sleeping/cat_sleeping_7.png',
+        '/Cat_sleeping/cat_sleeping_8.png',
+        '/Cat_sleeping/cat_sleeping_9.png',
+        '/Cat_sleeping/cat_sleeping_10.png',
+        '/Cat_sleeping/cat_sleeping_11.png',
+        '/Cat_sleeping/cat_sleeping_12.png',
+        '/Cat_sleeping/cat_sleeping_13.png',
+        '/Cat_sleeping/cat_sleeping_14.png',
+        '/Cat_sleeping/cat_sleeping_15.png',
+        '/Cat_sleeping/cat_sleeping_16.png',
+        // Adicione mais caminhos conforme necessário
+      ];
 
     return (
         <div>
@@ -26,7 +69,7 @@ function Start() {
                 }}
                 onClick={() => handleOptionChange('dog')}
             >
-                Dog
+                <DogAnimation frames={dogAnimationFrames} />
             </button>
             </div>
             <div>
@@ -46,7 +89,7 @@ function Start() {
                 }}
                 onClick={() => handleOptionChange('cat')}
             >
-                Cat
+                <CatAnimation frames={catAnimationFrames} />
             </button>
             </div>
             <div>

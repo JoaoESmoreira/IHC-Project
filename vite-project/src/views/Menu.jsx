@@ -37,7 +37,7 @@ function Menu() {
                             transform: 'translate(-50%, 50%)', // Offset to move the text down
                         }}
                     >
-                        Click to Map with {animalName}
+                        Click to walk with {animalName}
                     </span>
                 </button>
             </Link>
