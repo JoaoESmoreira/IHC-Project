@@ -6,7 +6,7 @@ import {
     useMap,
 } from "react-leaflet";
 
-import {blueIcon, redIcon, greyIcon, catIcon} from '../constants/icon'
+import {blueIcon, redIcon, greyIcon} from '../constants/icon'
 import {React, useEffect, useRef} from "react";
 
 
@@ -30,7 +30,15 @@ function OpenPopup({position, message}) {
 }
 
 
-function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message}) {
+function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message, pet}) {
+
+    const catIcon = L.icon({
+        iconSize: [60, 60],
+        iconAnchor: [21, 41],
+        popupAnchor: [2, -40],
+        iconUrl: pet,
+    });
+
 
     return newRewardAvailable || newTargetAvailable ? (
         ""

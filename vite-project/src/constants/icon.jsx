@@ -28,11 +28,4 @@ const greyIcon = L.icon({
   iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png",
 });
 
-const catIcon = L.icon({
-  iconSize: [50, 50],
-  iconAnchor: [21, 41],
-  popupAnchor: [2, -40],
-  iconUrl: customCat,
-});
-
-export {blueIcon, redIcon, greyIcon, catIcon};
+export {blueIcon, redIcon, greyIcon};

@@ -3,10 +3,11 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./Rewards.css"
 
-import image from "../assets/Cat_chewing/cat_chewing_1.png"
+import {catBlueHat, catPinkHat, catWhiteHat, blueHat, pinkHat, whiteHat} from '../constants/items'
 
-function Rewards({rewards}) {
-    const rewardsVector = [image, image, image, image, image, image, image, image, image, image];
+function Rewards({rewards, pet, setPet}) {
+    const equipedReward = [catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
+    const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -27,17 +28,24 @@ function Rewards({rewards}) {
         }
     };
 
+    // equip an item
+    const handleClick = (key) => {
+        setPet(equipedReward[key])
+    };
+
+
     return (
         <div>
-            <h1>reward</h1>
-                <div className="item">
-                    <img src={image} alt="pet" />
+            <h1>AR Maps</h1>
+                <div className="pet">
+                    <img src={pet} alt="pet" />
                 </div>
             <Carousel responsive={responsive}>
                 {
                     rewardsVector.map((imageReward, index) => (
-                        <div className="item">
-                            <img src={imageReward} alt="reward" key={index} />
+                        <div className="item" key={index}>
+                            <img src={imageReward} alt="reward" />
+                            <button className="equip-button" onClick={() => handleClick(index)}>Equipar</button>
                         </div>
                     )).slice(0,rewards)
                 }

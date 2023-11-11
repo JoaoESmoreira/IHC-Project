@@ -6,6 +6,7 @@ import Move from '../components/Move';
 import GPS from '../components/GPS';
 import Popup from '../components/Popup';
 
+import {blueHat, pinkHat, whiteHat} from '../constants/items'
 import './Map.css'
 
 
@@ -44,7 +45,7 @@ function randomNumber(min, max, excludeValue) {
 }
 
 
-function Map({numberRewards, setNumberRewards}) {
+function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet}) {
     const deiCoordinates = [40.186390, -8.416174];
     const cantineCoordinates = [40.186296, -8.413942];
     const deecCoordinates = [40.186648, -8.416426];
@@ -56,12 +57,11 @@ function Map({numberRewards, setNumberRewards}) {
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
     const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
+    const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
 
     const [needs, setNeeds]                           = useState(0);
-    const [level, setLevel]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
     const [targetIndex, setTargetIndex]               = useState(0);
-    const [availablePoints, setAvailablePoints]       = useState(2);
     const [newTargetAvailable, setNewTargetAvailable] = useState(false);
     const [newRewardAvailable, setNewRewardAvailable] = useState(false);
 
@@ -107,6 +107,7 @@ function Map({numberRewards, setNumberRewards}) {
                                     interestPoints={interestPoints} 
                                     targetIndex={availablePoints-1} 
                                     isPopup={true}
+                                    pet={pet}
                                     />
                     </Popup>
                 ) : ""
@@ -116,6 +117,7 @@ function Map({numberRewards, setNumberRewards}) {
                     <Popup trigger={true} setPopup={setNewRewardAvailable}>
                         <h1>Congrats!!</h1>
                         <p>The new reward!</p>
+                        <img src={rewardsVector[numberRewards-1]} alt="reward" />
                     </Popup>
                 ) : ""
             }
@@ -127,6 +129,7 @@ function Map({numberRewards, setNumberRewards}) {
                         newTargetAvailable={newTargetAvailable} 
                         newRewardAvailable={newRewardAvailable} 
                         message={messages[needs]}
+                        pet={pet}
                         />
 
             <h1>Status</h1>

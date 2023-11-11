@@ -7,13 +7,17 @@ import Menu from './views/Menu';
 import Map from './views/Map';
 import Rewards from './views/Rewards';
 import Home3 from './views/Home3';
+import pet from "./assets/Cat_chewing/cat_chewing_1.png"
 import './App.css'
 
 
 function App() {
-    const [numberRewards, setNumberRewards] = useState(2);
+    const [numberRewards, setNumberRewards] = useState(0);
     const [selectedOption, setSelectedOption] = useState('');
     const [animalName, setAnimalName] = useState('');
+    const [petImage, setPetImage] = useState(pet);
+    const [level, setLevel] = useState(0);
+    const [availablePoints, setAvailablePoints] = useState(2);
 
     return (
         <>
@@ -48,11 +52,23 @@ function App() {
                     />
 
                     <Route path='/map'>
-                        <Map numberRewards={numberRewards} setNumberRewards={setNumberRewards} />
+
+                        <Map numberRewards={numberRewards} 
+                        setNumberRewards={setNumberRewards} 
+                        level={level}
+                        setLevel={setLevel}
+                        availablePoints={availablePoints}
+                        setAvailablePoints={setAvailablePoints}
+                        pet={petImage}
+                        />
+
                     </Route>
                     <Route path='/rewards'>
-                        <Rewards rewards={numberRewards}/>
+
+                        <Rewards rewards={numberRewards} pet={petImage} setPet={setPetImage} />
+
                     </Route>
+
                     <Route path='/home3'>
                         <Home3 />
                     </Route>
