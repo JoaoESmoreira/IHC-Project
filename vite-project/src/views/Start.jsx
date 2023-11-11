@@ -4,8 +4,9 @@ import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-function Start() {
-    const [selectedOption, setSelectedOption] = useState('');
+
+function Start({selectedOption, setSelectedOption}) {
+
 
     const handleOptionChange = (option) => {
         setSelectedOption(option);
@@ -99,9 +100,10 @@ function Start() {
                 cursor: 'pointer',
                 marginTop: '30px', // Adiciona espaço entre os botões
               }}
+              
             >
               <Link
-                to={`/Start2/${selectedOption}`}
+                to={`/start2`}
                 style={{ textDecoration: 'none', color: 'white', fontSize: '25px'  }}
               >
                 Continuar

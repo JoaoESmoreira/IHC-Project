@@ -1,33 +1,69 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import DogAnimation from '../DogAnimation'; // Importar o novo componente
+import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
-function Menu() {
-    const { selectedOption, animalName } = useParams();
+function Menu({ selectedOption, animalName }) {
+
+    const dogAnimationFrames = [
+        '/Cat_tilting/cat_tilting_1.png',
+        '/Cat_tilting/cat_tilting_2.png',
+        '/Cat_tilting/cat_tilting_3.png',
+        '/Cat_tilting/cat_tilting_4.png',
+        '/Cat_tilting/cat_tilting_5.png',
+        '/Cat_tilting/cat_tilting_6.png',
+        '/Cat_tilting/cat_tilting_7.png',
+        '/Cat_tilting/cat_tilting_8.png',
+        '/Cat_tilting/cat_tilting_9.png',
+        '/Cat_tilting/cat_tilting_10.png',
+        '/Cat_tilting/cat_tilting_11.png',
+        '/Cat_tilting/cat_tilting_12.png',
+
+        // Adicione mais caminhos conforme necessário
+      ];
+    
+      const catAnimationFrames = [
+        '/Cat_tilting/cat_tilting_1.png',
+        '/Cat_tilting/cat_tilting_2.png',
+        '/Cat_tilting/cat_tilting_3.png',
+        '/Cat_tilting/cat_tilting_4.png',
+        '/Cat_tilting/cat_tilting_5.png',
+        '/Cat_tilting/cat_tilting_6.png',
+        '/Cat_tilting/cat_tilting_7.png',
+        '/Cat_tilting/cat_tilting_8.png',
+        '/Cat_tilting/cat_tilting_9.png',
+        '/Cat_tilting/cat_tilting_10.png',
+        '/Cat_tilting/cat_tilting_11.png',
+        '/Cat_tilting/cat_tilting_12.png',
+
+        // Adicione mais caminhos conforme necessário
+      ];
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
         
-            <p>Menu Page</p>
+            <p style={{ fontSize: '22px' }}>Menu</p>
 
-            <p>Selected Animal: {selectedOption}</p>
-            <p>Animal Name: {animalName}</p>
-            
-            <p>Menu</p>
             <div>
             <Link to={`/map`}>
                 <button
                     style={{
                         backgroundColor: 'rgb(255, 165, 0)',
                         borderRadius: '5px',
-                        padding: '80px 80px',
+                        padding: '40px 10px',
                         border: 'none',
                         cursor: 'pointer',
                         position: 'relative', // or 'absolute'
-                        left: '112px',
                         top: '10px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                     }}
                 >
+                    {selectedOption === 'cat' && (
+                            <CatAnimation frames={catAnimationFrames} width={300} height={215} style={{ top: '-20px' }}/>
+                    )}
                     <span
                         style={{
                             color: 'white',
@@ -49,14 +85,22 @@ function Menu() {
                     style={{
                         backgroundColor: 'rgb(255, 165, 0)',
                         borderRadius: '5px',
-                        padding: '80px 80px',
+                        padding: '40px 10px',
                         border: 'none',
                         cursor: 'pointer',
                         position: 'relative', // or 'absolute'
-                        left: '112px',
                         top: '30px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                     }}
                 >
+                     
+                        {selectedOption === 'cat' && (
+                            <CatAnimation frames={catAnimationFrames} width={300} height={215} style={{ top: '-20px' }}/>
+                    )}
+
+                    
                     <span
                         style={{
                             color: 'white',

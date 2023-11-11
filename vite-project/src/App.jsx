@@ -12,6 +12,8 @@ import './App.css'
 
 function App() {
     const [numberRewards, setNumberRewards] = useState(0);
+    const [selectedOption, setSelectedOption] = useState('');
+    const [animalName, setAnimalName] = useState('');
 
     return (
         <>
@@ -25,10 +27,25 @@ function App() {
 
                 <Switch>
 
-                    <Route path="/" exact component={Start} />
-                    <Route path="/start2/:selectedOption" component={Start2} />
-
-                    <Route path="/menu/:selectedOption/:animalName" component={Menu} />
+                    <Route
+                    path="/"
+                    exact
+                    render={(props) => (
+                    <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                    )}
+                    />
+                    <Route
+                    path="/start2"
+                    render={(props) => (
+                    <Start2 {...props} selectedOption={selectedOption}  animalName= {animalName} setAnimalName={setAnimalName}/>
+                    )}
+                    />
+                    <Route
+                    path="/menu"
+                    render={(props) => (
+                    <Menu {...props} selectedOption={selectedOption}  animalName= {animalName} />
+                    )}
+                    />
 
                     <Route path='/map'>
                         <Map numberRewards={numberRewards} setNumberRewards={setNumberRewards} />
