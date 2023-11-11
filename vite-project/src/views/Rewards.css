@@ -1,0 +1,9 @@
+
+.react-multi-carousel-list {
+    margin: 8px;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+}

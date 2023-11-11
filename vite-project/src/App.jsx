@@ -11,7 +11,7 @@ import './App.css'
 
 
 function App() {
-    const [numberRewards, setNumberRewards] = useState(0);
+    const [numberRewards, setNumberRewards] = useState(2);
     const [selectedOption, setSelectedOption] = useState('');
     const [animalName, setAnimalName] = useState('');
 
@@ -51,7 +51,7 @@ function App() {
                         <Map numberRewards={numberRewards} setNumberRewards={setNumberRewards} />
                     </Route>
                     <Route path='/rewards'>
-                        <Rewards />
+                        <Rewards rewards={numberRewards}/>
                     </Route>
                     <Route path='/home3'>
                         <Home3 />
