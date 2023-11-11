@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CatAnimation = ({ frames }) => {
+const CatAnimation = ({ frames, width, height }) => {
   const [currentFrame, setCurrentFrame] = useState(0);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const CatAnimation = ({ frames }) => {
     return () => clearInterval(interval);
   }, [currentFrame, frames.length]);
 
-  return <img src={frames[currentFrame]} alt="Cat Animation" />;
+  return <img src={frames[currentFrame]} alt="Cat Animation" style={{ width, height }} />;
 };
 
 export default CatAnimation;

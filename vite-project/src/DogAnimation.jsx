@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const DogAnimation = ({ frames }) => {
+const DogAnimation = ({ frames, width, height }) => {
   const [currentFrame, setCurrentFrame] = useState(0);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const DogAnimation = ({ frames }) => {
     return () => clearInterval(interval);
   }, [currentFrame, frames.length]);
 
-  return <img src={frames[currentFrame]} alt="Dog Animation" />;
+  return <img src={frames[currentFrame]} alt="Dog Animation" style={{ width, height }} />;
 };
 
 export default DogAnimation;
