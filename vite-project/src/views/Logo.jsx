@@ -47,7 +47,7 @@ function Logo({selectedOption, animalName}) {
           <h1 style={{ fontSize: '40px' , marginTop: '50px'}}>AR Maps</h1>
           <div style={{ position: 'relative', marginTop: '40px' }}>
             {(
-              <div style={{ position: 'relative', top: 0, left: -80 }}>
+              <div style={{ position: 'relative', top: 0, left: -75 }}>
                 <CatAnimation frames={catAnimationFrames} width={300} height={215} />
               </div>
             )}
