@@ -45,7 +45,7 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
     ) : (
         <div>
             <MapContainer
-                center={position} zoom={17} style={{width: '100%', height: '70vh'}}
+                center={position} zoom={17} style={{width: '100%', height: '55vh'}}
             >
                 <TileLayer
                     url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'

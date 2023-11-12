@@ -6,6 +6,12 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 function Menu({ selectedOption, animalName }) {
 
+    if (selectedOption === '' || animalName === '') {
+        // Replace '/start' with the actual route to your Start view
+        window.location.replace('/start');
+      }
+    else{
+
     const dogAnimationFrames = [
         '/Cat_tilting/cat_tilting_1.png',
         '/Cat_tilting/cat_tilting_2.png',
@@ -40,85 +46,82 @@ function Menu({ selectedOption, animalName }) {
         // Adicione mais caminhos conforme necessário
       ];
 
-    return (
+      return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
-        
-            <p style={{ fontSize: '22px' }}>Menu</p>
-
-            <div>
-            <Link to={`/map`}>
-                <button
-                    style={{
-                        backgroundColor: 'rgb(255, 165, 0)',
-                        borderRadius: '5px',
-                        padding: '40px 10px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        position: 'relative', // or 'absolute'
-                        top: '10px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
+          <h1 style={{ fontSize: '28px' }}>Menu</h1>
+      
+          <div>
+            <Link to={`/map`} style={{ textDecoration: 'none' }}>
+              <button
+                style={{
+                  border: '10px solid rgb(255, 165, 0)',
+                  backgroundColor: 'transparent', // Set background to transparent
+                  borderRadius: '10px',
+                  padding: '5px',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  top: '10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div style={{ marginBottom: '10px' }}>
+                  {selectedOption === 'gato' && (
+                    <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                  )}
+                </div>
+      
+                <span
+                  style={{
+                    color: 'black',
+                    fontSize: '10px',
+                    textAlign: 'center',
+                  }}
                 >
-                    {selectedOption === 'cat' && (
-                            <CatAnimation frames={catAnimationFrames} width={300} height={215} style={{ top: '-20px' }}/>
-                    )}
-                    <span
-                        style={{
-                            color: 'white',
-                            position: 'absolute', // Position the text absolutely within the button
-                            left: '50%', // Move the text horizontally to the center of the button
-                            top: '70%', // Move the text vertically to the center of the button
-                            transform: 'translate(-50%, 50%)', // Offset to move the text down
-                        }}
-                    >
-                        Click to walk with {animalName}
-                    </span>
-                </button>
+                  <h1>Caminhar com <br /> {animalName}</h1>
+                </span>
+              </button>
             </Link>
-
-            </div>
-            <div>
-            <Link to={`/`}>
-                <button
-                    style={{
-                        backgroundColor: 'rgb(255, 165, 0)',
-                        borderRadius: '5px',
-                        padding: '40px 10px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        position: 'relative', // or 'absolute'
-                        top: '30px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
+          </div>
+      
+          <div>
+            <Link to={`/rewards`} style={{ textDecoration: 'none' }}>
+              <button
+                style={{
+                  border: '10px solid rgb(255, 165, 0)',
+                  backgroundColor: 'transparent', // Set background to transparent
+                  borderRadius: '10px',
+                  padding: '5px',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  top: '50px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div style={{ marginBottom: '10px' }}>
+                  {selectedOption === 'gato' && (
+                    <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                  )}
+                </div>
+      
+                <span
+                  style={{
+                    color: 'black',
+                    fontSize: '10px',
+                    textAlign: 'center',
+                  }}
                 >
-                     
-                        {selectedOption === 'cat' && (
-                            <CatAnimation frames={catAnimationFrames} width={300} height={215} style={{ top: '-20px' }}/>
-                    )}
-
-                    
-                    <span
-                        style={{
-                            color: 'white',
-                            position: 'absolute', // Position the text absolutely within the button
-                            left: '50%', // Move the text horizontally to the center of the button
-                            top: '70%', // Move the text vertically to the center of the button
-                            transform: 'translate(-50%, 50%)', // Offset to move the text down
-                        }}
-                    >
-                        Click to Start
-                    </span>
-                </button>
+                  <h1>Personalizar<br /> {animalName}</h1>
+                </span>
+              </button>
             </Link>
-
-            </div>
-
+          </div>
         </div>
-    );
+      );
+    }
 }
 
 export default Menu;

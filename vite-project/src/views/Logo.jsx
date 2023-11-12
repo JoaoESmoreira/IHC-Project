@@ -5,7 +5,7 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function Start({selectedOption, setSelectedOption}) {
+function Logo({selectedOption, setSelectedOption}) {
 
 
     const handleOptionChange = (option) => {
@@ -53,42 +53,15 @@ function Start({selectedOption, setSelectedOption}) {
       ];
 
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
-          <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '24px', marginTop: '10px'}}>Escolha o animal:</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh'}}>
+          
+          <h1 style={{ fontSize: '40px' , marginTop: '50px'}}>AR Maps</h1>
+          <div
+          style={{ marginTop: '40px'}}
+          >
+              <DogAnimation frames={dogAnimationFrames} width={300} height={215} /> 
           </div>
-          <div>
-            <button
-              style={{
-                backgroundColor: selectedOption === 'cão' ? 'rgb(255, 165, 0)' : 'transparent',
-                color: selectedOption === 'cão' ? 'white' : 'rgb(255, 165, 0)', 
-                borderRadius: '10px',
-                padding: '5px',
-                border: '10px solid rgb(255, 165, 0)',
-                cursor: 'pointer',
-                marginTop: '20px', // Adiciona espaço entre os botões
-              }}
-              onClick={() => handleOptionChange('cão')}
-            >
-              <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
-            </button>
-          </div>
-          <div>
-            <button
-              style={{
-                backgroundColor: selectedOption === 'gato' ? 'rgb(255, 165, 0)' : 'transparent',
-                color: selectedOption === 'gato' ? 'white' : 'rgb(255, 165, 0)', 
-                borderRadius: '10px',
-                padding: '5px',
-                border: '10px solid rgb(255, 165, 0)',
-                cursor: 'pointer',
-                marginTop: '20px', // Adiciona espaço entre os botões
-              }}
-              onClick={() => handleOptionChange('gato')}
-            >
-              <CatAnimation frames={catAnimationFrames} width={300} height={215} />
-            </button>
-          </div>
+          
           <div>
             <button
               style={{
@@ -98,15 +71,15 @@ function Start({selectedOption, setSelectedOption}) {
                 padding: '10px',
                 border: 'none',
                 cursor: 'pointer',
-                marginTop: '30px', // Adiciona espaço entre os botões
+                marginTop: '70px', // Adiciona espaço entre os botões
               }}
               
             >
               <Link
-                to={`/start2`}
+                to={`/start`}
                 style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}
               >
-                <h1>Continuar</h1>
+                <h1>Clique para iniciar</h1>
               </Link>
             </button>
           </div>
@@ -114,4 +87,4 @@ function Start({selectedOption, setSelectedOption}) {
       );
 }
 
-export default Start;
+export default Logo;

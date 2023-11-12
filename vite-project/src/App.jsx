@@ -1,6 +1,7 @@
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
+import Logo from './views/Logo';
 import Start from './views/Start';
 import Start2 from './views/Start2';
 import Menu from './views/Menu';
@@ -22,7 +23,8 @@ function App() {
     return (
         <>
             <Router>
-                <Link to="/" >Start Page</Link>
+                <Link to="/" >Logo</Link>
+                <Link to="/start" >Start Page</Link>
                 <Link to="/start2" >Start2</Link>
                 <Link to="/menu" >Menu</Link>
                 <Link to="/map" >Game</Link>
@@ -30,9 +32,16 @@ function App() {
                 <Link to="/home3" >Home3</Link>
 
                 <Switch>
-
                     <Route
                     path="/"
+                    exact
+                    render={(props) => (
+                    <Logo {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                    )}
+                    />
+
+                    <Route
+                    path="/start"
                     exact
                     render={(props) => (
                     <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
