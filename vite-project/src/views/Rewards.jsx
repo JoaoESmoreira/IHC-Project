@@ -41,7 +41,7 @@ function Rewards({rewards, pet, setPet}) {
             <div>
             <BackToMenuButton />
             </div>
-            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '6vh', marginTop: '20px' }}>Personalizar</h1>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px' }}>Personalizar</h1>
                 <div className="pet">
                     <img src={pet} alt="pet" />
                 </div>

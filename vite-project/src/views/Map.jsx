@@ -98,7 +98,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             <BackToMenuButton />
             {/* Conteúdo da sua view */}
           </div>
-            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '6vh', marginTop: '20px' }}>Mapa</h1>
+          <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
             {/*
             // Uncomment to get current position
             <GPS setPosition={setPosition} />

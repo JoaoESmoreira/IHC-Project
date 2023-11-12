@@ -66,7 +66,7 @@ function Menu({ selectedOption, animalName }) {
             <BackToHomeButton3 />
             {/* Conteúdo da sua view */}
             </div>
-          <h1 style={{ fontSize: '28px', marginTop:'30px'}}>Menu</h1>
+          <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Menu</h1>
       
           <div>
             <Link to={`/map`} style={{ textDecoration: 'none' }}>
