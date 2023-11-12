@@ -55,7 +55,7 @@ function Start({selectedOption, setSelectedOption}) {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '24px', marginTop: '10px'}}>Escolha o animal:</h1>
+            <h1 style={{ fontSize: '24px', marginTop: '20px'}}>Escolha o animal:</h1>
           </div>
           <div>
             <button

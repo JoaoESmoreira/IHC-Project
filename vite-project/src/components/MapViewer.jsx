@@ -33,7 +33,7 @@ function OpenPopup({position, message}) {
 function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message, pet}) {
 
     const catIcon = L.icon({
-        iconSize: [60, 60],
+        iconSize: [42, 30],
         iconAnchor: [21, 41],
         popupAnchor: [2, -40],
         iconUrl: pet,

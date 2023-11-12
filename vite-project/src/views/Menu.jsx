@@ -13,35 +13,47 @@ function Menu({ selectedOption, animalName }) {
     else{
 
     const dogAnimationFrames = [
-        '/Cat_tilting/cat_tilting_1.png',
-        '/Cat_tilting/cat_tilting_2.png',
-        '/Cat_tilting/cat_tilting_3.png',
-        '/Cat_tilting/cat_tilting_4.png',
-        '/Cat_tilting/cat_tilting_5.png',
-        '/Cat_tilting/cat_tilting_6.png',
-        '/Cat_tilting/cat_tilting_7.png',
-        '/Cat_tilting/cat_tilting_8.png',
-        '/Cat_tilting/cat_tilting_9.png',
-        '/Cat_tilting/cat_tilting_10.png',
-        '/Cat_tilting/cat_tilting_11.png',
-        '/Cat_tilting/cat_tilting_12.png',
+        '/Cat_tilting_color/cat_tilting_1.png',
+        '/Cat_tilting_color/cat_tilting_2.png',
+        '/Cat_tilting_color/cat_tilting_3.png',
+        '/Cat_tilting_color/cat_tilting_4.png',
+        '/Cat_tilting_color/cat_tilting_5.png',
+        '/Cat_tilting_color/cat_tilting_6.png',
+        '/Cat_tilting_color/cat_tilting_7.png',
+        '/Cat_tilting_color/cat_tilting_8.png',
+        '/Cat_tilting_color/cat_tilting_9.png',
+        '/Cat_tilting_color/cat_tilting_10.png',
+        '/Cat_tilting_color/cat_tilting_11.png',
+        '/Cat_tilting_color/cat_tilting_12.png',
 
         // Adicione mais caminhos conforme necessário
       ];
     
       const catAnimationFrames = [
-        '/Cat_tilting/cat_tilting_1.png',
-        '/Cat_tilting/cat_tilting_2.png',
-        '/Cat_tilting/cat_tilting_3.png',
-        '/Cat_tilting/cat_tilting_4.png',
-        '/Cat_tilting/cat_tilting_5.png',
-        '/Cat_tilting/cat_tilting_6.png',
-        '/Cat_tilting/cat_tilting_7.png',
-        '/Cat_tilting/cat_tilting_8.png',
-        '/Cat_tilting/cat_tilting_9.png',
-        '/Cat_tilting/cat_tilting_10.png',
-        '/Cat_tilting/cat_tilting_11.png',
-        '/Cat_tilting/cat_tilting_12.png',
+        '/cat_walking/cat_walking_1.png',
+        '/cat_walking/cat_walking_2.png',
+        '/cat_walking/cat_walking_3.png',
+        '/cat_walking/cat_walking_4.png',
+        '/cat_walking/cat_walking_5.png',
+        '/cat_walking/cat_walking_6.png',
+        '/cat_walking/cat_walking_7.png',
+        '/cat_walking/cat_walking_8.png',
+        '/cat_walking/cat_walking_9.png',
+        '/cat_walking/cat_walking_10.png',
+        '/cat_walking/cat_walking_11.png',
+        '/cat_walking/cat_walking_13.png',
+        '/cat_walking/cat_walking_14.png',
+        '/cat_walking/cat_walking_15.png',
+        '/cat_walking/cat_walking_16.png',
+        '/cat_walking/cat_walking_17.png',
+        '/cat_walking/cat_walking_18.png',
+        '/cat_walking/cat_walking_19.png',
+        '/cat_walking/cat_walking_20.png',
+        '/cat_walking/cat_walking_21.png',
+        '/cat_walking/cat_walking_22.png',
+        '/cat_walking/cat_walking_23.png',
+        '/cat_walking/cat_walking_24.png',
+        '/cat_walking/cat_walking_25.png',
 
         // Adicione mais caminhos conforme necessário
       ];
@@ -103,7 +115,7 @@ function Menu({ selectedOption, animalName }) {
               >
                 <div style={{ marginBottom: '10px' }}>
                   {selectedOption === 'gato' && (
-                    <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                    <CatAnimation frames={dogAnimationFrames} width={300} height={215} />
                   )}
                 </div>
       
