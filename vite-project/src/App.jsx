@@ -23,20 +23,20 @@ function App() {
     return (
         <>
             <Router>
-                <Link to="/" >Logo</Link>
+                {/* <Link to="/" >Logo</Link>
                 <Link to="/start" >Start Page</Link>
                 <Link to="/start2" >Start2</Link>
                 <Link to="/menu" >Menu</Link>
                 <Link to="/map" >Game</Link>
                 <Link to="/rewards" >rewards</Link>
-                <Link to="/home3" >Home3</Link>
+                <Link to="/home3" >Home3</Link> */}
 
                 <Switch>
                     <Route
                     path="/"
                     exact
                     render={(props) => (
-                    <Logo {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                    <Logo {...props} selectedOption={selectedOption} animalName= {animalName} />
                     )}
                     />
 

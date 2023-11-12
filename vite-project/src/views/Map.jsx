@@ -9,6 +9,8 @@ import Popup from '../components/Popup';
 import {blueHat, pinkHat, whiteHat} from '../constants/items'
 import './Map.css'
 
+import BackToMenuButton from '../components/BackToMenuButton';
+
 
 function EuclidianDistance(position1, position2) {
     /**
@@ -91,8 +93,12 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
 
 
     return(
-        <div className='Map'>
-            <h1>AR Maps</h1>
+        <div className='Map' >
+            <div>
+            <BackToMenuButton />
+            {/* Conteúdo da sua view */}
+          </div>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '6vh', marginTop: '20px' }}>Mapa</h1>
             {/*
             // Uncomment to get current position
             <GPS setPosition={setPosition} />
@@ -132,9 +138,9 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
                         pet={pet}
                         />
 
-            <h1>Status</h1>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', fontSize: '23px'}}>Status</h1>
 
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
                 <p className="level">
                     Steps equals to Level: {level}
                 </p>

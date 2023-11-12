@@ -4,6 +4,8 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
+import BackToHomeButton2 from '../components/BackToHomeButton2';
+
 function Start2({selectedOption, animalName, setAnimalName}) {
 
     const history = useHistory();
@@ -56,7 +58,9 @@ function Start2({selectedOption, animalName, setAnimalName}) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
-            
+            <div>
+                <BackToHomeButton2 />
+            </div>
 
             {selectedOption === 'gato' && (
                 <div style={{ marginTop: '40px' }}>

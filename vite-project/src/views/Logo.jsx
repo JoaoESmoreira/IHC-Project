@@ -5,12 +5,9 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function Logo({selectedOption, setSelectedOption}) {
+function Logo({selectedOption, animalName}) {
+      const isDataValid = selectedOption !== '' && animalName !== '';
 
-
-    const handleOptionChange = (option) => {
-        setSelectedOption(option);
-    };
 
       const dogAnimationFrames = [
         '/Cat_sleeping/cat_sleeping_1.png',
@@ -59,6 +56,7 @@ function Logo({selectedOption, setSelectedOption}) {
           </div>
           
           <div>
+            <Link to={isDataValid ? '/menu' : '/start'} style={{ textDecoration: 'none' }}>
             <button
               style={{
                 backgroundColor: 'rgb(255, 165, 0)',
@@ -69,15 +67,10 @@ function Logo({selectedOption, setSelectedOption}) {
                 cursor: 'pointer',
                 marginTop: '70px', // Adiciona espaço entre os botões
               }}
-              
-            >
-              <Link
-                to={`/start`}
-                style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}
               >
                 <h1>Clique para iniciar</h1>
-              </Link>
             </button>
+            </Link>
           </div>
         </div>
       );

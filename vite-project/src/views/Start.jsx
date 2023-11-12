@@ -5,6 +5,8 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import BackToHomeButton from '../components/BackToHomeButton';
+
 function Start({selectedOption, setSelectedOption}) {
 
 
@@ -54,6 +56,10 @@ function Start({selectedOption, setSelectedOption}) {
 
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
+          <div>
+            <BackToHomeButton />
+            {/* Conteúdo da sua view */}
+          </div>
           <div style={{ textAlign: 'center' }}>
             <h1 style={{ fontSize: '24px', marginTop: '20px'}}>Escolha o animal:</h1>
           </div>

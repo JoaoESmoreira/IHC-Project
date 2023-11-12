@@ -5,6 +5,8 @@ import "./Rewards.css"
 
 import {catBlueHat, catPinkHat, catWhiteHat, blueHat, pinkHat, whiteHat} from '../constants/items'
 
+import BackToMenuButton from '../components/BackToMenuButton';
+
 function Rewards({rewards, pet, setPet}) {
     const equipedReward = [catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
     const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
@@ -36,7 +38,10 @@ function Rewards({rewards, pet, setPet}) {
 
     return (
         <div>
-            <h1>AR Maps</h1>
+            <div>
+            <BackToMenuButton />
+            </div>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '6vh', marginTop: '20px' }}>Personalizar</h1>
                 <div className="pet">
                     <img src={pet} alt="pet" />
                 </div>

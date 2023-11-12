@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
+import BackToHomeButton3 from '../components/BackToHomeButton3';
+
 function Menu({ selectedOption, animalName }) {
 
     if (selectedOption === '' || animalName === '') {
         // Replace '/start' with the actual route to your Start view
-        window.location.replace('/start');
+        window.location.replace('/');
       }
     else{
 
@@ -60,7 +62,11 @@ function Menu({ selectedOption, animalName }) {
 
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
-          <h1 style={{ fontSize: '28px' }}>Menu</h1>
+          <div>
+            <BackToHomeButton3 />
+            {/* Conteúdo da sua view */}
+            </div>
+          <h1 style={{ fontSize: '28px', marginTop:'30px'}}>Menu</h1>
       
           <div>
             <Link to={`/map`} style={{ textDecoration: 'none' }}>

@@ -8,23 +8,33 @@ function Move({setPosition}) {
     }
 
     return (
-        <div>
-            <div>
-                <button onClick={ () => updatePosition(0.00003, 0.0) }>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <button 
+                
+                onClick={ () => updatePosition(0.00003, 0.0) }>
                     UP
                 </button>
-                <button onClick={ () => updatePosition(-0.00003, 0.0) }>
+                <div 
+                    style={{
+                            marginTop: '10px'
+                        }}>
+                        <button onClick={ () => updatePosition(0.0, -0.00003) }>
+                            LEFT
+                        </button>
+                        <button onClick={ () => updatePosition(0.0, 0.00003) }>
+                            RIGHT
+                        </button>
+                    </div>
+                <button 
+                style={{
+                    marginTop: '10px'
+                }}
+                onClick={ () => updatePosition(-0.00003, 0.0) }>
                     DOWN
                 </button>
             </div>
-            <div>
-                <button onClick={ () => updatePosition(0.0, -0.00003) }>
-                    LEFT
-                </button>
-                <button onClick={ () => updatePosition(0.0, 0.00003) }>
-                    RIGHT
-                </button>
-            </div>
+            
         </div>
     )
 }
