@@ -48,6 +48,35 @@ function Menu({ selectedOption, animalName }) {
         // Adicione mais caminhos conforme necessário
       ];
     
+      const dogAnimationFrames = [
+        '/dog_walking/dog_walking_1.png',
+        '/dog_walking/dog_walking_2.png',
+        '/dog_walking/dog_walking_3.png',
+        '/dog_walking/dog_walking_4.png',
+        '/dog_walking/dog_walking_5.png',
+        '/dog_walking/dog_walking_6.png',
+        '/dog_walking/dog_walking_7.png',
+        '/dog_walking/dog_walking_8.png',
+        '/dog_walking/dog_walking_9.png',
+        '/dog_walking/dog_walking_10.png',
+        '/dog_walking/dog_walking_11.png',
+        '/dog_walking/dog_walking_13.png',
+        '/dog_walking/dog_walking_14.png',
+        '/dog_walking/dog_walking_15.png',
+        '/dog_walking/dog_walking_16.png',
+        '/dog_walking/dog_walking_17.png',
+        '/dog_walking/dog_walking_18.png',
+        '/dog_walking/dog_walking_19.png',
+        '/dog_walking/dog_walking_20.png',
+        '/dog_walking/dog_walking_21.png',
+        '/dog_walking/dog_walking_22.png',
+        '/dog_walking/dog_walking_23.png',
+        '/dog_walking/dog_walking_24.png',
+        '/dog_walking/dog_walking_25.png',
+
+        // Adicione mais caminhos conforme necessário
+      ];
+
       const catAnimationFrames = [
         '/cat_walking/cat_walking_1.png',
         '/cat_walking/cat_walking_2.png',
@@ -103,6 +132,9 @@ function Menu({ selectedOption, animalName }) {
                 <div style={{ marginBottom: '10px' }}>
                   {selectedOption === 'gato' && (
                     <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                  )}
+                  {selectedOption === 'cão' && (
+                    <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
                   )}
                 </div>
       
