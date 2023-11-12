@@ -14,7 +14,24 @@ function Menu({ selectedOption, animalName }) {
       }
     else{
 
-    const dogAnimationFrames = [
+      const dogAnimationFrames2 = [
+        '/dog_tilting/dog_tilting_1.png',
+        '/dog_tilting/dog_tilting_2.png',
+        '/dog_tilting/dog_tilting_3.png',
+        '/dog_tilting/dog_tilting_4.png',
+        '/dog_tilting/dog_tilting_5.png',
+        '/dog_tilting/dog_tilting_6.png',
+        '/dog_tilting/dog_tilting_7.png',
+        '/dog_tilting/dog_tilting_8.png',
+        '/dog_tilting/dog_tilting_9.png',
+        '/dog_tilting/dog_tilting_10.png',
+        '/dog_tilting/dog_tilting_11.png',
+        '/dog_tilting/dog_tilting_12.png',
+
+        // Adicione mais caminhos conforme necessário
+      ];
+
+    const catAnimationFrames2 = [
         '/Cat_tilting_color/cat_tilting_1.png',
         '/Cat_tilting_color/cat_tilting_2.png',
         '/Cat_tilting_color/cat_tilting_3.png',
@@ -62,10 +79,9 @@ function Menu({ selectedOption, animalName }) {
 
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
-          <div>
+          <div style={{  zIndex: '999' }}>
             <BackToHomeButton3 />
-            {/* Conteúdo da sua view */}
-            </div>
+          </div>
           <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Menu</h1>
       
           <div>
@@ -121,7 +137,10 @@ function Menu({ selectedOption, animalName }) {
               >
                 <div style={{ marginBottom: '10px' }}>
                   {selectedOption === 'gato' && (
-                    <CatAnimation frames={dogAnimationFrames} width={300} height={215} />
+                    <CatAnimation frames={catAnimationFrames2} width={300} height={215} />
+                  )}
+                  {selectedOption === 'cão' && (
+                    <DogAnimation frames={dogAnimationFrames2} width={300} height={215} />
                   )}
                 </div>
       

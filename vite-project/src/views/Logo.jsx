@@ -10,22 +10,18 @@ function Logo({selectedOption, animalName}) {
 
 
       const dogAnimationFrames = [
-        '/Cat_sleeping/cat_sleeping_1.png',
-        '/Cat_sleeping/cat_sleeping_2.png',
-        '/Cat_sleeping/cat_sleeping_3.png',
-        '/Cat_sleeping/cat_sleeping_4.png',
-        '/Cat_sleeping/cat_sleeping_5.png',
-        '/Cat_sleeping/cat_sleeping_6.png',
-        '/Cat_sleeping/cat_sleeping_7.png',
-        '/Cat_sleeping/cat_sleeping_8.png',
-        '/Cat_sleeping/cat_sleeping_9.png',
-        '/Cat_sleeping/cat_sleeping_10.png',
-        '/Cat_sleeping/cat_sleeping_11.png',
-        '/Cat_sleeping/cat_sleeping_12.png',
-        '/Cat_sleeping/cat_sleeping_13.png',
-        '/Cat_sleeping/cat_sleeping_14.png',
-        '/Cat_sleeping/cat_sleeping_15.png',
-        '/Cat_sleeping/cat_sleeping_16.png',
+        '/dog_tilting/dog_tilting_1.png',
+        '/dog_tilting/dog_tilting_2.png',
+        '/dog_tilting/dog_tilting_3.png',
+        '/dog_tilting/dog_tilting_4.png',
+        '/dog_tilting/dog_tilting_5.png',
+        '/dog_tilting/dog_tilting_6.png',
+        '/dog_tilting/dog_tilting_7.png',
+        '/dog_tilting/dog_tilting_8.png',
+        '/dog_tilting/dog_tilting_9.png',
+        '/dog_tilting/dog_tilting_10.png',
+        '/dog_tilting/dog_tilting_11.png',
+        '/dog_tilting/dog_tilting_12.png',
         // Adicione mais caminhos conforme necessário
       ];
     
@@ -49,10 +45,18 @@ function Logo({selectedOption, animalName}) {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh'}}>
           
           <h1 style={{ fontSize: '40px' , marginTop: '50px'}}>AR Maps</h1>
-          <div
-          style={{ marginTop: '40px'}}
-          >
-              <DogAnimation frames={catAnimationFrames} width={300} height={215} /> 
+          <div style={{ position: 'relative', marginTop: '40px' }}>
+            {(
+              <div style={{ position: 'relative', top: 0, left: -80 }}>
+                <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+              </div>
+            )}
+
+            {(
+              <div style={{ position: 'absolute', top: 70, left:50 }}>
+                <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
+              </div>
+            )}
           </div>
           
           <div>
@@ -65,7 +69,7 @@ function Logo({selectedOption, animalName}) {
                 padding: '10px',
                 border: 'none',
                 cursor: 'pointer',
-                marginTop: '70px', // Adiciona espaço entre os botões
+                marginTop: '100px', // Adiciona espaço entre os botões
               }}
               >
                 <h1>Clique para iniciar</h1>

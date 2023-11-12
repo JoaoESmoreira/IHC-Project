@@ -17,16 +17,15 @@ function Start2({selectedOption, animalName, setAnimalName}) {
         else{
 
     const dogAnimationFrames = [
-        '/Cat_talking/cat_talking_1.png',
-        '/Cat_talking/cat_talking_2.png',
-        '/Cat_talking/cat_talking_3.png',
-        '/Cat_talking/cat_talking_4.png',
-        '/Cat_talking/cat_talking_5.png',
-        '/Cat_talking/cat_talking_6.png',
-        '/Cat_talking/cat_talking_7.png',
-        '/Cat_talking/cat_talking_8.png',
-        '/Cat_talking/cat_talking_9.png',
-        '/Cat_talking/cat_talking_10.png',
+        '/dog_talking/dog_talking_1.png',
+        '/dog_talking/dog_talking_2.png',
+        '/dog_talking/dog_talking_3.png',
+        '/dog_talking/dog_talking_4.png',
+        '/dog_talking/dog_talking_5.png',
+        '/dog_talking/dog_talking_6.png',
+        '/dog_talking/dog_talking_7.png',
+        '/dog_talking/dog_talking_8.png',
+        '/dog_talking/dog_talking_9.png',
         // Adicione mais caminhos conforme necessário
       ];
     
@@ -65,6 +64,11 @@ function Start2({selectedOption, animalName, setAnimalName}) {
             {selectedOption === 'gato' && (
                 <div style={{ marginTop: '40px' }}>
                     <CatAnimation frames={catAnimationFrames} width={350} height={250} />
+                </div>
+            )}
+            {selectedOption === 'cão' && (
+                <div style={{ marginTop: '40px' }}>
+                    <DogAnimation frames={dogAnimationFrames} width={350} height={250} />
                 </div>
             )}
             
