@@ -8,7 +8,6 @@ import Menu from './views/Menu';
 import Map from './views/Map';
 import Rewards from './views/Rewards';
 import Home3 from './views/Home3';
-import pet from "./assets/Cat_chewing/cat_chewing_1.png"
 import './App.css'
 
 
@@ -16,9 +15,10 @@ function App() {
     const [numberRewards, setNumberRewards] = useState(0);
     const [selectedOption, setSelectedOption] = useState('');
     const [animalName, setAnimalName] = useState('');
-    const [petImage, setPetImage] = useState(pet);
+    const [petImage, setPetImage] = useState(null);
     const [level, setLevel] = useState(0);
     const [availablePoints, setAvailablePoints] = useState(2);
+ 
 
     return (
         <>
@@ -44,13 +44,13 @@ function App() {
                     path="/start"
                     exact
                     render={(props) => (
-                    <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                    <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption}  />
                     )}
                     />
                     <Route
                     path="/start2"
                     render={(props) => (
-                    <Start2 {...props} selectedOption={selectedOption}  animalName= {animalName} setAnimalName={setAnimalName}/>
+                    <Start2 {...props} selectedOption={selectedOption}  animalName= {animalName} setAnimalName={setAnimalName} setPet={setPetImage}/>
                     )}
                     />
                     <Route
@@ -74,7 +74,7 @@ function App() {
                     </Route>
                     <Route path='/rewards'>
 
-                        <Rewards rewards={numberRewards} pet={petImage} setPet={setPetImage} />
+                        <Rewards rewards={numberRewards} pet= {petImage} setPet={setPetImage} selectedOption={selectedOption} />
 
                     </Route>
 

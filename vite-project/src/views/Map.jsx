@@ -59,7 +59,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
     const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
-    const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
+    const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
 
     const [needs, setNeeds]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);

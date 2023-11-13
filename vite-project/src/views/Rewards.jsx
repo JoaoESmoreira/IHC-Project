@@ -3,13 +3,14 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./Rewards.css"
 
-import {catBlueHat, catPinkHat, catWhiteHat, blueHat, pinkHat, whiteHat} from '../constants/items'
+import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhiteHat, dog, blueHat, pinkHat, whiteHat, noHat} from '../constants/items'
 
 import BackToMenuButton from '../components/BackToMenuButton';
 
-function Rewards({rewards, pet, setPet}) {
-    const equipedReward = [catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
-    const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
+function Rewards({rewards,pet, setPet, selectedOption}) {
+    const CatequipedReward = [cat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
+    const DogequipedReward = [dog, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat];
+    const rewardsVector = [noHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -32,7 +33,11 @@ function Rewards({rewards, pet, setPet}) {
 
     // equip an item
     const handleClick = (key) => {
-        setPet(equipedReward[key])
+        if (selectedOption === 'gato') {
+            setPet(CatequipedReward[key]);
+        } else if (selectedOption === 'cão') {
+            setPet(DogequipedReward[key]);
+        }
     };
 
 
@@ -43,7 +48,7 @@ function Rewards({rewards, pet, setPet}) {
             </div>
             <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px' }}>Personalizar</h1>
                 <div className="pet">
-                    <img src={pet} alt="pet" />
+                    <img src= {pet} alt="pet" />
                 </div>
             <Carousel responsive={responsive}>
                 {
@@ -52,7 +57,7 @@ function Rewards({rewards, pet, setPet}) {
                             <img src={imageReward} alt="reward" />
                             <button className="equip-button" onClick={() => handleClick(index)}>Equipar</button>
                         </div>
-                    )).slice(0,rewards)
+                    )).slice(0,rewards+1)
                 }
             </Carousel>
         </div>

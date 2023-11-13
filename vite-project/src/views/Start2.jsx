@@ -6,7 +6,10 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import BackToHomeButton2 from '../components/BackToHomeButton2';
 
-function Start2({selectedOption, animalName, setAnimalName}) {
+import cat from '/Cat_tilting_color/cat_tilting_1.png';
+import dog from '/dog_tilting/dog_tilting_1.png';
+
+function Start2({selectedOption, animalName, setAnimalName, setPet}) {
 
     const history = useHistory();
 
@@ -15,6 +18,12 @@ function Start2({selectedOption, animalName, setAnimalName}) {
           window.location.replace('/start');
         }
         else{
+    
+            if (selectedOption === 'gato') {
+                setPet(cat);
+              } else{
+                setPet(dog);
+              }
 
     const dogAnimationFrames = [
         '/dog_talking/dog_talking_1.png',
