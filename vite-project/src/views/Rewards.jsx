@@ -55,7 +55,23 @@ function Rewards({rewards,pet, setPet, selectedOption}) {
                     rewardsVector.map((imageReward, index) => (
                         <div className="item" key={index}>
                             <img src={imageReward} alt="reward" />
-                            <button className="equip-button" onClick={() => handleClick(index)}>Equipar</button>
+                            <button
+                                style={{
+                                    backgroundColor: 'rgb(255, 165, 0)',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    padding: '10px 20px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '30px', // Adiciona espaço entre os botões
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                            }}       
+                            onClick={() => handleClick(index)}                    
+                            >
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
+
+                            </button>
                         </div>
                     )).slice(0,rewards+1)
                 }
