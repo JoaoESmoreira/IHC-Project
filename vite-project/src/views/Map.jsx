@@ -58,8 +58,8 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
     const chemistryCoordinates = [40.186373, -8.417735];
     const mechanicCoordinates = [40.184472, -8.412236];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
-        auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
-    const messages = ["Estou com fome", "Preciso de ir à casa de banho", "Quero estudar"];
+        civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates];
+    const messages = ["Eu tenho fome!", "Eu preciso de ir à casa de banho!", "Eu preciso de estudar!", "Eu queria ir ao parque de diversões!"];
     const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
     const CatequipedReward = [cat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
     const DogequipedReward = [dog, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat];
@@ -118,7 +118,9 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newTargetAvailable ? (
                     <Popup trigger={true} setPopup={setNewTargetAvailable}>
-                        <h1>Um Novo Ponto de Interesse Disponivel</h1>
+                        <div className="popup-content">
+                        <h1>Um novo ponto de interesse!</h1>
+                        </div>
                         <MapViewer className="map-container" 
                                     position={position} 
                                     availablePoints={availablePoints} 
@@ -134,10 +136,28 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newRewardAvailable ? (
                     <Popup trigger={true} setPopup={setNewRewardAvailable}>
-                        <h1>Parabéns!!</h1>
-                        <p>Ganhaste uma recompensa!</p>
-                        <img src={rewardsVector[numberRewards-1]} alt="reward" />
-                        <button className='equip-button' onClick={() => handleClick(numberRewards)}>Equipar</button>
+                        <div className="popup-content">
+                            <h1>Parabéns!!</h1>
+                            <p>Um novo Chapéu!</p>
+                            <img src={rewardsVector[numberRewards-1]} alt="reward" />
+                            <button
+                                style={{
+                                    backgroundColor: 'rgb(255, 165, 0)',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    padding: '10px 20px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '30px', // Adiciona espaço entre os botões
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                            }}       
+                            onClick={() => handleClick(numberRewards)}                    
+                            >
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
+
+                            </button>
+                        </div>
                     </Popup>
                 ) : ""
             }
@@ -152,15 +172,21 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
                         pet={pet}
                         />
 
-            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', fontSize: '23px'}}>Status</h1>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', fontSize: '23px'}}>Progresso</h1>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
                 <p className="level">
-                    Pontos de Interesse Disponiveis: {availablePoints}
+                    Número de interações: {level}
                 </p>
                 <p className="level">
-                    Número de Recompensas: {numberRewards}
+                    Pontos de interesse desbloqueados: {availablePoints}
                 </p>
+                <p className="level">
+                    Número de prémios coletados: {numberRewards}
+                </p>
+                {/* <p className="level">
+                    Objetivo: {targetIndex}
+                </p> */}
             </div>
 
             <Move setPosition={setPosition} />

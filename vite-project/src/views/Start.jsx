@@ -16,7 +16,7 @@ function Start({selectedOption, setSelectedOption, setPet}) {
 
     const handleOptionChange = (option) => {
         setSelectedOption(option);
-        option === 'cao' ? setPet(dog) : setPet(cat);
+        option === 'cão' ? setPet(dog) : setPet(cat);
     };
 
       const dogAnimationFrames = [

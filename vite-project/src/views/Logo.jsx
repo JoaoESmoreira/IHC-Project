@@ -44,7 +44,7 @@ function Logo({selectedOption, animalName}) {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh'}}>
           
-          <h1 style={{ fontSize: '40px' , marginTop: '50px'}}>AR Maps</h1>
+          <h1 style={{ fontSize: '35px' , marginTop: '50px'}}>Pata-Caminhada</h1>
           <div style={{ position: 'relative', marginTop: '40px' }}>
             {(
               <div style={{ position: 'relative', top: 0, left: -75 }}>
@@ -69,7 +69,7 @@ function Logo({selectedOption, animalName}) {
                 padding: '10px',
                 border: 'none',
                 cursor: 'pointer',
-                marginTop: '100px', // Adiciona espaço entre os botões
+                marginTop: '110px', // Adiciona espaço entre os botões
               }}
               >
                 <h1>Clique para iniciar</h1>
