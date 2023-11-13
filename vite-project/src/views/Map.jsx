@@ -59,7 +59,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
     const mechanicCoordinates = [40.184472, -8.412236];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
-    const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
+    const messages = ["Estou com fome", "Preciso de ir à casa de banho", "Quero estudar"];
     const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
     const CatequipedReward = [cat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
     const DogequipedReward = [dog, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat];
@@ -118,7 +118,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newTargetAvailable ? (
                     <Popup trigger={true} setPopup={setNewTargetAvailable}>
-                        <h1>A New Interest Point is Available</h1>
+                        <h1>Um Novo Ponto de Interesse Disponivel</h1>
                         <MapViewer className="map-container" 
                                     position={position} 
                                     availablePoints={availablePoints} 
@@ -134,8 +134,8 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newRewardAvailable ? (
                     <Popup trigger={true} setPopup={setNewRewardAvailable}>
-                        <h1>Congrats!!</h1>
-                        <p>The new reward!</p>
+                        <h1>Parabéns!!</h1>
+                        <p>Ganhaste uma recompensa!</p>
                         <img src={rewardsVector[numberRewards-1]} alt="reward" />
                         <button className='equip-button' onClick={() => handleClick(numberRewards)}>Equipar</button>
                     </Popup>
@@ -156,16 +156,10 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
                 <p className="level">
-                    Steps equals to Level: {level}
+                    Pontos de Interesse Disponiveis: {availablePoints}
                 </p>
                 <p className="level">
-                    Available Points: {availablePoints}
-                </p>
-                <p className="level">
-                    Number of Available Rewards: {numberRewards}
-                </p>
-                <p className="level">
-                    Target: {targetIndex}
+                    Número de Recompensas: {numberRewards}
                 </p>
             </div>
 
