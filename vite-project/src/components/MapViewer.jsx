@@ -30,7 +30,7 @@ function OpenPopup({position, message}) {
 }
 
 
-function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message, pet}) {
+function MapViewer({position, availablePoints, interestPoints, targetIndex, newTargetAvailable, newRewardAvailable, isPopup, message, pet, zoom}) {
 
     const catIcon = L.icon({
         iconSize: [42, 30],
@@ -39,13 +39,16 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
         iconUrl: pet,
     });
 
+    if (!zoom) {
+        zoom = 17;
+    }
 
     return newRewardAvailable || newTargetAvailable ? (
         ""
     ) : (
         <div>
             <MapContainer
-                center={position} zoom={17} style={{width: '100%', height: '50vh'}}
+                center={position} zoom={zoom} style={{width: '100%', height: '50vh'}}
             >
                 <TileLayer
                     url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'

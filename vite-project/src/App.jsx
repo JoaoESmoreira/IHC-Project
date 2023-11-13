@@ -44,7 +44,7 @@ function App() {
                     path="/start"
                     exact
                     render={(props) => (
-                    <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption}  />
+                    <Start {...props} selectedOption={selectedOption} setSelectedOption={setSelectedOption} setPet={setPetImage} />
                     )}
                     />
                     <Route
@@ -69,6 +69,8 @@ function App() {
                         availablePoints={availablePoints}
                         setAvailablePoints={setAvailablePoints}
                         pet={petImage}
+                        setPet={setPetImage}
+                        selectedOption={selectedOption}
                         />
 
                     </Route>

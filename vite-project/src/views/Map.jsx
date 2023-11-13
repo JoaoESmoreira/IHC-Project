@@ -6,8 +6,9 @@ import Move from '../components/Move';
 import GPS from '../components/GPS';
 import Popup from '../components/Popup';
 
-import {blueHat, pinkHat, whiteHat} from '../constants/items'
+import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhiteHat, dog, blueHat, pinkHat, whiteHat} from '../constants/items'
 import './Map.css'
+import './Rewards.css'
 
 import BackToMenuButton from '../components/BackToMenuButton';
 
@@ -47,7 +48,7 @@ function randomNumber(min, max, excludeValue) {
 }
 
 
-function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet}) {
+function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption}) {
     const deiCoordinates = [40.186390, -8.416174];
     const cantineCoordinates = [40.186296, -8.413942];
     const deecCoordinates = [40.186648, -8.416426];
@@ -60,6 +61,8 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
         auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
     const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
     const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
+    const CatequipedReward = [cat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
+    const DogequipedReward = [dog, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat, dogBlueHat, dogPinkHat, dogWhiteHat];
 
     const [needs, setNeeds]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
@@ -91,18 +94,27 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
         setNeeds(randomValue);
     }, [level]);
 
+    // equip item
+    const handleClick = (key) => {
+        if (selectedOption === 'gato') {
+            setPet(CatequipedReward[key]);
+        } else if (selectedOption === 'cão') {
+            setPet(DogequipedReward[key]);
+        }
+        setNewRewardAvailable(false);
+    };
 
     return(
         <div className='Map' >
             <div>
             <BackToMenuButton />
             {/* Conteúdo da sua view */}
-          </div>
-          <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
-            {/*
+            </div>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
+            {
             // Uncomment to get current position
-            <GPS setPosition={setPosition} />
-            */}
+            //<GPS setPosition={setPosition} />
+            }
             {
                 newTargetAvailable ? (
                     <Popup trigger={true} setPopup={setNewTargetAvailable}>
@@ -114,6 +126,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
                                     targetIndex={availablePoints-1} 
                                     isPopup={true}
                                     pet={pet}
+                                    zoom={16}
                                     />
                     </Popup>
                 ) : ""
@@ -124,6 +137,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
                         <h1>Congrats!!</h1>
                         <p>The new reward!</p>
                         <img src={rewardsVector[numberRewards-1]} alt="reward" />
+                        <button className='equip-button' onClick={() => handleClick(numberRewards)}>Equipar</button>
                     </Popup>
                 ) : ""
             }

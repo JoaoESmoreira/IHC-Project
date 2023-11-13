@@ -6,24 +6,25 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import BackToHomeButton2 from '../components/BackToHomeButton2';
 
-import cat from '/Cat_tilting_color/cat_tilting_1.png';
-import dog from '/dog_tilting/dog_tilting_1.png';
+// import cat from '/Cat_tilting_color/cat_tilting_1.png';
+// import dog from '/dog_tilting/dog_tilting_1.png';
 
 function Start2({selectedOption, animalName, setAnimalName, setPet}) {
 
     const history = useHistory();
 
-        if (selectedOption === '') {
-          // Replace '/start' with the actual route to your Start view
-          window.location.replace('/start');
-        }
-        else{
-    
-            if (selectedOption === 'gato') {
-                setPet(cat);
-              } else{
-                setPet(dog);
-              }
+    // useEffect(() => {
+    //    if (selectedOption === '') {
+    //      // Replace '/start' with the actual route to your Start view
+    //      window.location.replace('/start');
+    //    } else {
+    //        if (selectedOption === 'gato') {
+    //            setPet(cat);
+    //        } else {
+    //            setPet(dog);
+    //        }
+    //    }
+    // }, [selectedOption]);
 
     const dogAnimationFrames = [
         '/dog_talking/dog_talking_1.png',
@@ -118,7 +119,6 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
             </button>
         </div>
     );
-    }
 }
 
 export default Start2;
