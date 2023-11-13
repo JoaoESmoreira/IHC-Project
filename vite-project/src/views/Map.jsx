@@ -58,7 +58,7 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
     const chemistryCoordinates = [40.186373, -8.417735];
     const mechanicCoordinates = [40.184472, -8.412236];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
-        auditoriumCoordinates, civilCoordinates, chemistryCoordinates, mechanicCoordinates];
+        civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates];
     const messages = ["I am hungry", "I need to go to the bathroom", "I need to study"];
     const rewardsVector = [blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat, blueHat, pinkHat, whiteHat];
     const CatequipedReward = [cat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat, catBlueHat, catPinkHat, catWhiteHat];
@@ -118,7 +118,9 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newTargetAvailable ? (
                     <Popup trigger={true} setPopup={setNewTargetAvailable}>
+                        <div className="popup-content">
                         <h1>A New Interest Point is Available</h1>
+                        </div>
                         <MapViewer className="map-container" 
                                     position={position} 
                                     availablePoints={availablePoints} 
@@ -134,10 +136,12 @@ function Map({numberRewards, setNumberRewards, level, setLevel, availablePoints,
             {
                 newRewardAvailable ? (
                     <Popup trigger={true} setPopup={setNewRewardAvailable}>
-                        <h1>Congrats!!</h1>
-                        <p>The new reward!</p>
-                        <img src={rewardsVector[numberRewards-1]} alt="reward" />
-                        <button className='equip-button' onClick={() => handleClick(numberRewards)}>Equipar</button>
+                        <div className="popup-content">
+                            <h1>Congrats!!</h1>
+                            <p>The new reward!</p>
+                            <img src={rewardsVector[numberRewards-1]} alt="reward" />
+                            <button className='equip-button' onClick={() => handleClick(numberRewards)}>Equipar</button>
+                        </div>
                     </Popup>
                 ) : ""
             }

@@ -25,3 +25,13 @@
     top: 16px;
     right: 16px;
 }
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-content img {
+    margin-bottom: 10px; /* Ajuste a margem conforme necessário */
+}
