@@ -114,7 +114,7 @@ function Menu({ selectedOption, animalName }) {
           <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Menu</h1>
       
           <div>
-            <Link to={`/map`} style={{ textDecoration: 'none' }}>
+            <Link to={`/map2`} style={{ textDecoration: 'none' }}>
               <button
                 style={{
                   border: '10px solid rgb(255, 165, 0)',

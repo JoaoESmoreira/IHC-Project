@@ -63,63 +63,47 @@ function Start({selectedOption, setSelectedOption, setPet}) {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
           <div>
             <BackToHomeButton />
-            {/* Conteúdo da sua view */}
           </div>
+
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '24px', marginTop: '20px'}}>Escolha o animal:</h1>
+            <h1 style={{ fontSize: '24px', marginTop: '70px'}}>Escolha entre cão ou gato:</h1>
           </div>
+
           <div>
-            <button
-              style={{
-                backgroundColor: selectedOption === 'cão' ? 'rgb(255, 165, 0)' : 'transparent',
-                color: selectedOption === 'cão' ? 'white' : 'rgb(255, 165, 0)', 
-                borderRadius: '10px',
-                padding: '5px',
-                border: '10px solid rgb(255, 165, 0)',
-                cursor: 'pointer',
-                marginTop: '20px', // Adiciona espaço entre os botões
-              }}
-              onClick={() => handleOptionChange('cão')}
-            >
-              <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
-            </button>
-          </div>
-          <div>
-            <button
-              style={{
-                backgroundColor: selectedOption === 'gato' ? 'rgb(255, 165, 0)' : 'transparent',
-                color: selectedOption === 'gato' ? 'white' : 'rgb(255, 165, 0)', 
-                borderRadius: '10px',
-                padding: '5px',
-                border: '10px solid rgb(255, 165, 0)',
-                cursor: 'pointer',
-                marginTop: '20px', // Adiciona espaço entre os botões
-              }}
-              onClick={() => handleOptionChange('gato')}
-            >
-              <CatAnimation frames={catAnimationFrames} width={300} height={215} />
-            </button>
-          </div>
-          <div>
-            <button
-              style={{
-                backgroundColor: 'rgb(255, 165, 0)',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '10px',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '30px', // Adiciona espaço entre os botões
-              }}
-              
-            >
-              <Link
-                to={`/start2`}
-                style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}
+            <Link to="/start2">
+              <button
+                style={{
+                  backgroundColor: selectedOption === 'cão' ? 'rgb(255, 165, 0)' : 'transparent',
+                  color: selectedOption === 'cão' ? 'white' : 'rgb(255, 165, 0)', 
+                  borderRadius: '10px',
+                  padding: '5px',
+                  border: '10px solid rgb(255, 165, 0)',
+                  cursor: 'pointer',
+                  marginTop: '20px', // Adiciona espaço entre os botões
+                }}
+                onClick={() => handleOptionChange('cão')}
               >
-                <h1>Continuar</h1>
-              </Link>
-            </button>
+                <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
+              </button>
+            </Link>
+          </div>
+          <div>
+            <Link to="/start2">
+              <button
+                style={{
+                  backgroundColor: selectedOption === 'gato' ? 'rgb(255, 165, 0)' : 'transparent',
+                  color: selectedOption === 'gato' ? 'white' : 'rgb(255, 165, 0)', 
+                  borderRadius: '10px',
+                  padding: '5px',
+                  border: '10px solid rgb(255, 165, 0)',
+                  cursor: 'pointer',
+                  marginTop: '20px', // Adiciona espaço entre os botões
+                }}
+                onClick={() => handleOptionChange('gato')}
+              >
+                <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+              </button>
+            </Link>
           </div>
         </div>
       );

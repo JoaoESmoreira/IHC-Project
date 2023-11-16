@@ -57,6 +57,12 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
         setAnimalName(event.target.value);
     };
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && animalName.trim() !== '') {
+          history.push(`/menu`);
+        }
+      };
+
     const navigateToMenu = () => {
         if (animalName) {
             history.push(`/menu`);
@@ -72,12 +78,12 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
             </div>
 
             {selectedOption === 'gato' && (
-                <div style={{ marginTop: '40px' }}>
+                <div style={{ marginTop: '70px' }}>
                     <CatAnimation frames={catAnimationFrames} width={350} height={250} />
                 </div>
             )}
             {selectedOption === 'cão' && (
-                <div style={{ marginTop: '40px' }}>
+                <div style={{ marginTop: '70px' }}>
                     <DogAnimation frames={dogAnimationFrames} width={350} height={250} />
                 </div>
             )}
@@ -87,6 +93,7 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                 type="text"
                 value={animalName}
                 onChange={handleNameChange}
+                onKeyDown={handleKeyDown}
                 style={{ 
                     height: '40px', 
                     fontSize: '20px', 
@@ -122,5 +129,3 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
 }
 
 export default Start2;
-
-
