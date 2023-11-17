@@ -10,6 +10,7 @@ import {blueIcon, redIcon, greyIcon} from '../constants/icon'
 import {React, useEffect, useRef} from "react";
 
 
+
 function ResetLocation({position}) {
     const map = useMap();
     if (map) {
@@ -52,7 +53,7 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
             >
                 <TileLayer
                     url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-                    attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    /* attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' */
                     recenter={position}
                 />
                 {
@@ -68,7 +69,7 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
                         ))
                     ) : (
                         <Marker position={interestPoints[targetIndex]} icon={blueIcon} >
-                            <OpenPopup position={[interestPoints[targetIndex][0]+0.00025, interestPoints[targetIndex][1]]} message={message}/>
+                            {/* <OpenPopup position={[interestPoints[targetIndex][0]+0.00025, interestPoints[targetIndex][1]]} message={message}/> */}
                         </Marker>
                     )
                 }
