@@ -105,7 +105,7 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                 }} // Ajuste a altura e o tamanho da fonte conforme necessário
             />
 
-
+            {animalName && (
             <button
                 style={{
                     backgroundColor: 'rgb(255, 165, 0)',
@@ -124,6 +124,7 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                     <h1>Continuar</h1>
                 </Link>
             </button>
+            )}
         </div>
     );
 }

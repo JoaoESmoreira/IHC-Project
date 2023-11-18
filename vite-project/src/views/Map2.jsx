@@ -9,7 +9,8 @@ import Popup from '../components/Popup';
 import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhiteHat, dog, blueHat, pinkHat, whiteHat, noHat, 
     kerchief_purpleHat, kerchief_redHat, kerchief_green_whiteHat, kerchief_red_whiteHat, 
     catkerchief_purpleHat, catkerchief_redHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat, 
-    dogkerchief_purpleHat, dogkerchief_redHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat} from '../constants/items'
+    dogkerchief_purpleHat, dogkerchief_redHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
+    bath_icon, food_icon, play_icon, read_icon} from '../constants/items'
 import './Map2.css'
 import './Rewards.css'
 
@@ -79,7 +80,9 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const mechanicCoordinates = [40.184472, -8.412236];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates];
-    const messages = ["Eu tenho fome!", "Eu preciso de ir à casa de banho!", "Eu preciso de estudar!", "Eu queria ir ao parque de diversões!"];
+    const messages = ["Eu preciso de estudar!", "Eu preciso de tomar banho!",  "Eu tenho fome!", "Eu queria jogar à bola!",
+                    "Eu tenho fome!", "Eu preciso de tomar banho!", "Eu queria jogar à bola!", "Eu preciso de estudar!"];
+    const iconsMap = [read_icon, bath_icon, food_icon, play_icon, food_icon, bath_icon, play_icon, read_icon];
     const rewardsVector = [blueHat, kerchief_purpleHat, pinkHat, kerchief_redHat, whiteHat, kerchief_green_whiteHat, kerchief_red_whiteHat];
     const CatequipedReward = [cat, catBlueHat, catkerchief_purpleHat, catPinkHat, catkerchief_redHat, catWhiteHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat];
     const DogequipedReward = [dog, dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat];
@@ -87,6 +90,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const [needs, setNeeds]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
     const [targetIndex, setTargetIndex]               = useState(0);
+    const [previousTargetIndex, setPreviousTargetIndex] = useState(null);
     const [newTargetAvailable, setNewTargetAvailable] = useState(false);
     const [newRewardAvailable, setNewRewardAvailable] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -118,7 +122,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         // Adicione mais caminhos conforme necessário
       ];
 
-      const dogAnimationFrames2 = [
+      const dogAnimationFramesEat = [
         '/dog_chewing/dog_chewing1.png',
         '/dog_chewing/dog_chewing2.png',
         '/dog_chewing/dog_chewing3.png',
@@ -132,7 +136,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         // Adicione mais caminhos conforme necessário
       ];
     
-      const catAnimationFrames2 = [
+      const catAnimationFramesEat = [
         '/Cat_chewing/cat_chewing_1.png',
         '/Cat_chewing/cat_chewing_2.png',
         '/Cat_chewing/cat_chewing_3.png',
@@ -145,6 +149,51 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         '/Cat_chewing/cat_chewing_10.png',
         // Adicione mais caminhos conforme necessário
       ];
+
+      const dogAnimationFramesShower = [
+        '/dog_shower/dog_shower1.png',
+        '/dog_shower/dog_shower2.png',
+        '/dog_shower/dog_shower3.png',
+        '/dog_shower/dog_shower4.png',
+        '/dog_shower/dog_shower5.png',
+        '/dog_shower/dog_shower6.png',
+        '/dog_shower/dog_shower7.png',
+        '/dog_shower/dog_shower8.png',
+        '/dog_shower/dog_shower9.png',
+        '/dog_shower/dog_shower10.png',
+        '/dog_shower/dog_shower11.png',
+        '/dog_shower/dog_shower12.png',
+        '/dog_shower/dog_shower13.png',
+        '/dog_shower/dog_shower14.png',
+        '/dog_shower/dog_shower15.png',
+        '/dog_shower/dog_shower16.png',
+        '/dog_shower/dog_shower17.png',
+        '/dog_shower/dog_shower18.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+    
+      const catAnimationFramesShower = [
+        '/cat_shower/cat_shower1.png',
+        '/cat_shower/cat_shower2.png',
+        '/cat_shower/cat_shower3.png',
+        '/cat_shower/cat_shower4.png',
+        '/cat_shower/cat_shower5.png',
+        '/cat_shower/cat_shower6.png',
+        '/cat_shower/cat_shower7.png',
+        '/cat_shower/cat_shower8.png',
+        '/cat_shower/cat_shower9.png',
+        '/cat_shower/cat_shower10.png',
+        '/cat_shower/cat_shower11.png',
+        '/cat_shower/cat_shower12.png',
+        '/cat_shower/cat_shower13.png',
+        '/cat_shower/cat_shower14.png',
+        '/cat_shower/cat_shower15.png',
+        '/cat_shower/cat_shower16.png',
+        '/cat_shower/cat_shower17.png',
+        '/cat_shower/cat_shower18.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+
 
     // ckeck if the person is next to target
     useEffect(() => {
@@ -165,8 +214,8 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     // update target to achieve
     useEffect(() => {
         var randomValue = randomNumber(0, availablePoints, targetIndex);
+        setPreviousTargetIndex(targetIndex);
         setTargetIndex(randomValue);
-        randomValue = randomNumber(0, messages.length, -1);
         setNeeds(randomValue);
     }, [level]);
 
@@ -182,6 +231,10 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     };
     const handleClick2 = (key) => {
         setNewTargetAvailable(false);
+        setShowPopup(false);
+    };
+    const handleClick3 = (key) => {
+        setNewRewardAvailable(false);
         setShowPopup(false);
     };
 
@@ -274,7 +327,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         position={position} 
                         availablePoints={availablePoints} 
                         interestPoints={interestPoints} 
-                        targetIndex={targetIndex}  
+                        targetIndex={targetIndex}
                         message={messages[needs]}
                         pet={pet}
                         zoom={16}
@@ -282,10 +335,22 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
                     {selectedOption === 'gato' && (
                         <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
-                            <div>
-                                <CatAnimation frames={catAnimationFrames2} width={300} height={215} />
-                                <img src={pet} alt="reward" style={petImageStyle} />
-                            </div>
+
+                                {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
+                                    /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
+                                    <CatAnimation frames={catAnimationFramesShower} width={300} height={215} />
+                                ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
+                                    <div>
+                                        <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                ) : (
+                                    <div>
+                                        <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                )}
+
                             <button
                                 style={{
                                 backgroundColor: 'rgb(255, 165, 0)',
@@ -297,6 +362,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 marginTop: '30px',
                                 width: 'fit-content',
                                 alignSelf: 'center',
+                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
                                 }}
                                 onClick={() => setShowPopup(true)}
                             >
@@ -307,10 +373,20 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
                     {selectedOption === 'cão' && (
                         <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
-                            <div>
-                                <DogAnimation frames={dogAnimationFrames2} width={300} height={215} />
-                                <img src={pet} alt="reward" style={petImageStyle} />
-                            </div>
+                            {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
+                                    /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
+                                    <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
+                                ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
+                                    <div>
+                                        <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                ) : (
+                                    <div>
+                                        <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                )}
                             <button
                                 style={{
                                 backgroundColor: 'rgb(255, 165, 0)',
@@ -351,17 +427,20 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         />
                         <button
                             style={{
-                            backgroundColor: 'rgb(255, 165, 0)',
-                            color: 'white',
-                            borderRadius: '10px',
-                            padding: '10px 20px',
-                            border: 'none',
-                            cursor: 'pointer',
-                            marginTop: '30px',
-                            width: '38%',
-                            margin: 'auto',
-                            display: 'block',
-                            }}
+                                backgroundColor: 'rgb(255, 165, 0)',
+                                color: 'white',
+                                borderRadius: '10px',
+                                padding: '10px 20px',
+                                border: 'none',
+                                cursor: 'pointer',
+                                marginTop: '30px', // Adiciona espaço entre os botões
+                                /* width: 'fit-content', */
+                                /* alignSelf: 'flex-end', // Alinha o botão à direita
+                                marginRight: '10px', // Adiciona margem à direita */
+                                margin: 'auto',
+                                display: 'block',
+                                width: '38%',
+                        }} 
                             onClick={() => handleClick2(numberRewards)}
                         >
                             <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Ok</h1>
@@ -387,10 +466,20 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
                     {selectedOption === 'gato' && (
                         <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
-                            <div>
-                                <CatAnimation frames={catAnimationFrames2} width={300} height={215} />
-                                <img src={pet} alt="reward" style={petImageStyle} />
-                            </div>
+                            {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
+                                    /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
+                                    <CatAnimation frames={catAnimationFramesShower} width={300} height={215} />
+                                ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
+                                    <div>
+                                        <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                ) : (
+                                    <div>
+                                        <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                )}
                             <button
                                 style={{
                                 backgroundColor: 'rgb(255, 165, 0)',
@@ -412,10 +501,20 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
                     {selectedOption === 'cão' && (
                         <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
-                            <div>
-                                <DogAnimation frames={dogAnimationFrames2} width={300} height={215} />
-                                <img src={pet} alt="reward" style={petImageStyle} />
-                            </div>
+                             {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
+                                    /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
+                                    <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
+                                ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
+                                    <div>
+                                        <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                ) : (
+                                    <div>
+                                        <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
+                                        <img src={pet} alt="reward" style={petImageStyle} />
+                                </div>
+                                )}
                             <button
                                 style={{
                                 backgroundColor: 'rgb(255, 165, 0)',
@@ -459,6 +558,23 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                             onClick={() => handleClick(numberRewards)}                    
                             >
                                 <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
+
+                            </button>
+                            <button
+                                style={{
+                                    backgroundColor: 'rgb(255, 165, 0)',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    padding: '5px 10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '30px', // Adiciona espaço entre os botões
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                            }}       
+                            onClick={() => handleClick3(numberRewards)}                    
+                            >
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}>Não Equipar</h1>
 
                             </button>
                         </div>
