@@ -73,8 +73,7 @@ function Start({selectedOption, setSelectedOption, setPet}) {
             <Link to="/start2">
               <button
                 style={{
-                  backgroundColor: selectedOption === 'cão' ? 'rgb(255, 165, 0)' : 'transparent',
-                  color: selectedOption === 'cão' ? 'white' : 'rgb(255, 165, 0)', 
+                  backgroundColor: 'rgba(255,100,0,0.2)', 
                   borderRadius: '10px',
                   padding: '5px',
                   border: '10px solid rgb(255, 165, 0)',
@@ -91,8 +90,7 @@ function Start({selectedOption, setSelectedOption, setPet}) {
             <Link to="/start2">
               <button
                 style={{
-                  backgroundColor: selectedOption === 'gato' ? 'rgb(255, 165, 0)' : 'transparent',
-                  color: selectedOption === 'gato' ? 'white' : 'rgb(255, 165, 0)', 
+                  backgroundColor: 'rgba(255,100,0,0.2)',
                   borderRadius: '10px',
                   padding: '5px',
                   border: '10px solid rgb(255, 165, 0)',

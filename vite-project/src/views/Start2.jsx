@@ -101,7 +101,7 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                     marginTop: '20px', 
                     border: '5px solid rgb(255, 165, 0)',
                     borderRadius: '5px',
-
+                    boxShadow: '0 0 5px rgba(255, 100, 0, 0.5)',
                 }} // Ajuste a altura e o tamanho da fonte conforme necessário
             />
 

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 
 import MapViewer from '../components/MapViewer';
+import MapViewer2 from '../components/MapViewer2';
 import Move from '../components/Move';
 import GPS from '../components/GPS';
 import Popup from '../components/Popup';
@@ -194,6 +195,20 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         // Adicione mais caminhos conforme necessário
       ];
 
+      const presentAnimationFrames = [
+        '/present_animation/present_animation_1.png',
+        '/present_animation/present_animation_2.png',
+        '/present_animation/present_animation_3.png',
+        '/present_animation/present_animation_4.png',
+        '/present_animation/present_animation_5.png',
+        '/present_animation/present_animation_6.png',
+        '/present_animation/present_animation_7.png',
+        '/present_animation/present_animation_8.png',
+        '/present_animation/present_animation_9.png',
+        '/present_animation/present_animation_10.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+
 
     // ckeck if the person is next to target
     useEffect(() => {
@@ -323,12 +338,8 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     <>
                     
                     <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
-                    <MapViewer className="map-container"
+                    <MapViewer2 className="map-container"
                         position={position} 
-                        availablePoints={availablePoints} 
-                        interestPoints={interestPoints} 
-                        targetIndex={targetIndex}
-                        message={messages[needs]}
                         pet={pet}
                         zoom={16}
                         />
@@ -353,20 +364,22 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
                             <button
                                 style={{
-                                backgroundColor: 'rgb(255, 165, 0)',
-                                color: 'white',
-                                borderRadius: '10px',
-                                padding: '10px 20px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                marginTop: '30px',
-                                width: 'fit-content',
-                                alignSelf: 'center',
-                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
-                                }}
+                                    backgroundColor: 'transparent',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '-40px',
+                                    left : '-30px',
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                                    marginLeft: '-70px',
+                                    clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
+                                    }}
                                 onClick={() => setShowPopup(true)}
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1>
+                                {/* <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1> */}
+                                <DogAnimation frames={presentAnimationFrames} width={210} height={150} />
                             </button>
                         </div>
                     )}
@@ -389,19 +402,22 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 )}
                             <button
                                 style={{
-                                backgroundColor: 'rgb(255, 165, 0)',
-                                color: 'white',
-                                borderRadius: '10px',
-                                padding: '10px 20px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                marginTop: '30px',
-                                width: 'fit-content',
-                                alignSelf: 'center',
-                                }}
+                                    backgroundColor: 'transparent',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '-40px',
+                                    left : '-30px',
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                                    marginLeft: '-70px',
+                                    clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
+                                    }}
                                 onClick={() => setShowPopup(true)}
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1>
+                                {/* <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1> */}
+                                <DogAnimation frames={presentAnimationFrames} width={210} height={150} />
                             </button>
                         </div>
                     )}
@@ -454,12 +470,8 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                 newRewardAvailable && (
                     <>
                     <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
-                    <MapViewer className="map-container"
+                    <MapViewer2 className="map-container"
                         position={position} 
-                        availablePoints={availablePoints} 
-                        interestPoints={interestPoints} 
-                        targetIndex={targetIndex} 
-                        message={messages[needs]}
                         pet={pet}
                         zoom={16}
                         />
@@ -482,19 +494,22 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 )}
                             <button
                                 style={{
-                                backgroundColor: 'rgb(255, 165, 0)',
-                                color: 'white',
-                                borderRadius: '10px',
-                                padding: '10px 20px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                marginTop: '30px',
-                                width: 'fit-content',
-                                alignSelf: 'center',
-                                }}
+                                    backgroundColor: 'transparent',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '-40px',
+                                    left : '-30px',
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                                    marginLeft: '-70px',
+                                    clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
+                                    }}
                                 onClick={() => setShowPopup(true)}
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1>
+                                {/* <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1> */}
+                                <DogAnimation frames={presentAnimationFrames} width={210} height={150} />
                             </button>
                         </div>
                     )}
@@ -517,19 +532,22 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 )}
                             <button
                                 style={{
-                                backgroundColor: 'rgb(255, 165, 0)',
-                                color: 'white',
-                                borderRadius: '10px',
-                                padding: '10px 20px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                marginTop: '30px',
-                                width: 'fit-content',
-                                alignSelf: 'center',
-                                }}
+                                    backgroundColor: 'transparent',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '-40px',
+                                    left : '-30px',
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                                    marginLeft: '-70px',
+                                    clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
+                                    }}
                                 onClick={() => setShowPopup(true)}
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1>
+                                {/* <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Presente</h1> */}
+                                <DogAnimation frames={presentAnimationFrames} width={210} height={150} />
                             </button>
                         </div>
                     )}

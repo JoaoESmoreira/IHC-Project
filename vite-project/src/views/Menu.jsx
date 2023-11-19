@@ -118,7 +118,7 @@ function Menu({ selectedOption, animalName }) {
               <button
                 style={{
                   border: '10px solid rgb(255, 165, 0)',
-                  backgroundColor: 'transparent', // Set background to transparent
+                  backgroundColor: 'rgba(255,100,0,0.2)', // Set background to transparent
                   borderRadius: '10px',
                   padding: '5px',
                   cursor: 'pointer',
@@ -156,7 +156,7 @@ function Menu({ selectedOption, animalName }) {
               <button
                 style={{
                   border: '10px solid rgb(255, 165, 0)',
-                  backgroundColor: 'transparent', // Set background to transparent
+                  backgroundColor: 'rgba(255,100,0,0.2)', // Set background to transparent
                   borderRadius: '10px',
                   padding: '5px',
                   cursor: 'pointer',
