@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
-import cat from '/Cat_tilting_color/cat_tilting_1.png';
-import dog from '/dog_tilting/dog_tilting_1.png';
+
+import {cat,  dog} from '../constants/items'
 
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';

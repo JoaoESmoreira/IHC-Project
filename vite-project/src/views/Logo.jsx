@@ -22,22 +22,26 @@ function Logo({selectedOption, animalName}) {
         '/dog_tilting/dog_tilting_10.png',
         '/dog_tilting/dog_tilting_11.png',
         '/dog_tilting/dog_tilting_12.png',
+        '/dog_tilting/dog_tilting_13.png',
+        '/dog_tilting/dog_tilting_14.png',
         // Adicione mais caminhos conforme necessário
       ];
     
       const catAnimationFrames = [
-        '/Cat_tilting_color/cat_tilting_1.png',
-        '/Cat_tilting_color/cat_tilting_2.png',
-        '/Cat_tilting_color/cat_tilting_3.png',
-        '/Cat_tilting_color/cat_tilting_4.png',
-        '/Cat_tilting_color/cat_tilting_5.png',
-        '/Cat_tilting_color/cat_tilting_6.png',
-        '/Cat_tilting_color/cat_tilting_7.png',
-        '/Cat_tilting_color/cat_tilting_8.png',
-        '/Cat_tilting_color/cat_tilting_9.png',
-        '/Cat_tilting_color/cat_tilting_10.png',
-        '/Cat_tilting_color/cat_tilting_11.png',
-        '/Cat_tilting_color/cat_tilting_12.png',
+        '/cat_tilting/cat_tilting_1.png',
+        '/cat_tilting/cat_tilting_2.png',
+        '/cat_tilting/cat_tilting_3.png',
+        '/cat_tilting/cat_tilting_4.png',
+        '/cat_tilting/cat_tilting_5.png',
+        '/cat_tilting/cat_tilting_6.png',
+        '/cat_tilting/cat_tilting_7.png',
+        '/cat_tilting/cat_tilting_8.png',
+        '/cat_tilting/cat_tilting_9.png',
+        '/cat_tilting/cat_tilting_10.png',
+        '/cat_tilting/cat_tilting_11.png',
+        '/cat_tilting/cat_tilting_12.png',
+        '/cat_tilting/cat_tilting_13.png',
+        '/cat_tilting/cat_tilting_14.png',
         // Adicione mais caminhos conforme necessário
       ];
 

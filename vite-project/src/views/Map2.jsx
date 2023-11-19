@@ -84,9 +84,12 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const messages = ["Eu preciso de estudar!", "Eu preciso de tomar banho!",  "Eu tenho fome!", "Eu queria jogar à bola!",
                     "Eu tenho fome!", "Eu preciso de tomar banho!", "Eu queria jogar à bola!", "Eu preciso de estudar!"];
     const iconsMap = [read_icon, bath_icon, food_icon, play_icon, food_icon, bath_icon, play_icon, read_icon];
-    const rewardsVector = [blueHat, kerchief_purpleHat, pinkHat, kerchief_redHat, whiteHat, kerchief_green_whiteHat, kerchief_red_whiteHat];
-    const CatequipedReward = [cat, catBlueHat, catkerchief_purpleHat, catPinkHat, catkerchief_redHat, catWhiteHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat];
-    const DogequipedReward = [dog, dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat];
+    const rewardsVector = [blueHat, kerchief_purpleHat, pinkHat, kerchief_redHat, whiteHat, kerchief_green_whiteHat, kerchief_red_whiteHat,
+                            blueHat, kerchief_purpleHat, pinkHat, kerchief_redHat, whiteHat, kerchief_green_whiteHat, kerchief_red_whiteHat];
+    const CatequipedReward = [cat, catBlueHat, catkerchief_purpleHat, catPinkHat, catkerchief_redHat, catWhiteHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat,
+                                catBlueHat, catkerchief_purpleHat, catPinkHat, catkerchief_redHat, catWhiteHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat];
+    const DogequipedReward = [dog, dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
+                                dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat];
 
     const [needs, setNeeds]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
@@ -207,6 +210,85 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         '/present_animation/present_animation_9.png',
         '/present_animation/present_animation_10.png',
         // Adicione mais caminhos conforme necessário
+      ];
+
+      const catAnimationFramesBlink = [
+        '/cat_blinking/cat_blinking1.png',
+        '/cat_blinking/cat_blinking2.png',
+        '/cat_blinking/cat_blinking3.png',
+        '/cat_blinking/cat_blinking4.png',
+        '/cat_blinking/cat_blinking5.png',
+        '/cat_blinking/cat_blinking6.png',
+        '/cat_blinking/cat_blinking7.png',
+        '/cat_blinking/cat_blinking8.png',
+        '/cat_blinking/cat_blinking9.png',
+        '/cat_blinking/cat_blinking10.png',
+        '/cat_blinking/cat_blinking11.png',
+        '/cat_blinking/cat_blinking12.png',
+        '/cat_blinking/cat_blinking13.png',
+        '/cat_blinking/cat_blinking14.png',
+        '/cat_blinking/cat_blinking15.png',
+        '/cat_blinking/cat_blinking16.png',
+        '/cat_blinking/cat_blinking17.png',
+        '/cat_blinking/cat_blinking18.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+
+      const dogAnimationFramesBlink = [
+        '/dog_blinking/dog_blinking1.png',
+        '/dog_blinking/dog_blinking2.png',
+        '/dog_blinking/dog_blinking3.png',
+        '/dog_blinking/dog_blinking4.png',
+        '/dog_blinking/dog_blinking5.png',
+        '/dog_blinking/dog_blinking6.png',
+        '/dog_blinking/dog_blinking7.png',
+        '/dog_blinking/dog_blinking8.png',
+        '/dog_blinking/dog_blinking9.png',
+        '/dog_blinking/dog_blinking10.png',
+        '/dog_blinking/dog_blinking11.png',
+        '/dog_blinking/dog_blinking12.png',
+        '/dog_blinking/dog_blinking13.png',
+        '/dog_blinking/dog_blinking14.png',
+        '/dog_blinking/dog_blinking15.png',
+        '/dog_blinking/dog_blinking16.png',
+        '/dog_blinking/dog_blinking17.png',
+        '/dog_blinking/dog_blinking18.png',
+        // Adicione mais caminhos conforme necessário
+      ];
+
+      const bookAnimationFrames = [
+        '/book_animation/book_animation_1.png',
+        '/book_animation/book_animation_2.png',
+        '/book_animation/book_animation_3.png',
+        '/book_animation/book_animation_4.png',
+        '/book_animation/book_animation_5.png',
+        '/book_animation/book_animation_6.png',
+        '/book_animation/book_animation_7.png',
+        '/book_animation/book_animation_8.png',
+        '/book_animation/book_animation_9.png',
+        '/book_animation/book_animation_10.png',
+        '/book_animation/book_animation_11.png',
+        '/book_animation/book_animation_12.png',
+      ];
+
+      const ballAnimationFrames = [
+        '/ball_animation/ball_animation_1.png',
+        '/ball_animation/ball_animation_2.png',
+        '/ball_animation/ball_animation_3.png',
+        '/ball_animation/ball_animation_4.png',
+        '/ball_animation/ball_animation_5.png',
+        '/ball_animation/ball_animation_6.png',
+        '/ball_animation/ball_animation_7.png',
+        '/ball_animation/ball_animation_8.png',
+        '/ball_animation/ball_animation_9.png',
+        '/ball_animation/ball_animation_10.png',
+        '/ball_animation/ball_animation_11.png',
+        '/ball_animation/ball_animation_12.png',
+        '/ball_animation/ball_animation_13.png',
+        '/ball_animation/ball_animation_14.png',
+        '/ball_animation/ball_animation_15.png',
+        '/ball_animation/ball_animation_16.png',
+        '/ball_animation/ball_animation_17.png',
       ];
 
 
@@ -355,6 +437,34 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                         <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
                                         <img src={pet} alt="reward" style={petImageStyle} />
                                 </div>
+                                ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={bookAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
+                                ) : previousTargetIndex === 3 || previousTargetIndex === 6 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={ballAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
                                 ) : (
                                     <div>
                                         <CatAnimation frames={catAnimationFrames} width={300} height={215} />
@@ -394,6 +504,34 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                         <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
                                         <img src={pet} alt="reward" style={petImageStyle} />
                                 </div>
+                                ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={bookAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
+                                ) : previousTargetIndex === 3 || previousTargetIndex === 6 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={ballAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
                                 ) : (
                                     <div>
                                         <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
@@ -486,6 +624,34 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                         <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
                                         <img src={pet} alt="reward" style={petImageStyle} />
                                 </div>
+                                ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={bookAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
+                                ) : previousTargetIndex === 3 || previousTargetIndex === 6 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={ballAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
                                 ) : (
                                     <div>
                                         <CatAnimation frames={catAnimationFrames} width={300} height={215} />
@@ -524,6 +690,34 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                         <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
                                         <img src={pet} alt="reward" style={petImageStyle} />
                                 </div>
+                                ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={bookAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
+                                ) : previousTargetIndex === 3 || previousTargetIndex === 6 ? (
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesBlink} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={ballAnimationFrames} width={300} height={215} />
+                                        </div>
+                                        
+                                    </div>
                                 ) : (
                                     <div>
                                         <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
@@ -559,7 +753,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     <Popup trigger={true} setPopup={() => {setShowPopup(false); setPresentClicked(false);}}>
                         <div className="popup-content">
                             <h1>Parabéns!!</h1>
-                            <p>Um novo Chapéu!</p>
+                            <p>Um novo acessório!</p>
                             <img src={rewardsVector[numberRewards-1]} alt="reward" />
                             <button
                                 style={{

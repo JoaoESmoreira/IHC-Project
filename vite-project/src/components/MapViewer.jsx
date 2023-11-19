@@ -67,7 +67,7 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
 
     const mapIcon = L.icon({
         iconSize: [30, 30],
-        iconAnchor: [15, 30],
+        iconAnchor: [15, 25],
         popupAnchor: [0, -30],
         className: getClassForIndex(targetIndex),
         iconUrl: iconsMap[targetIndex],
@@ -94,7 +94,9 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
                         interestPoints.map((coord, index) =>(
                             index < availablePoints ? (
                                 index === targetIndex  ? (
-                                    <Marker position={coord} key={index} icon={mapIcon} />
+                                    <Marker position={coord} key={index} icon={mapIcon}>
+                                      <ResetLocation position={coord} />
+                                    </Marker>  
                                 ) : (
                                     <Marker position={coord} key={index} icon={greyIcon2} />
                                 )
@@ -102,12 +104,12 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
                         ))
                     ) : (
                         <Marker position={interestPoints[targetIndex]} icon={mapIcon} >
-                            {/* <OpenPopup position={[interestPoints[targetIndex][0]+0.00025, interestPoints[targetIndex][1]]} message={message}/> */}
+                        <ResetLocation position={position}/>
                         </Marker>
+                        
                     )
                 }
                 <Marker position={position} icon={petIcon} />
-                <ResetLocation position={position} />
             </MapContainer>
         </div>
     )
