@@ -85,7 +85,7 @@ function MapViewer({position, availablePoints, interestPoints, targetIndex, newT
                 center={position} zoom={zoom} style={{width: '100%', height: '50vh'}}
             >
                 <TileLayer
-                    url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    url='https://api.maptiler.com/maps/topo-v2/256/{z}/{x}/{y}.png?key=RmY5auDo9agHVZkhjMoU'
                     /* attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' */
                     recenter={position}
                 />
