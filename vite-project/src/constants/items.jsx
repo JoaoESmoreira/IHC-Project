@@ -1,12 +1,12 @@
 
-import cat from '/cat_tilting/cat_tilting_1.png';
-import catBlueHat from '/cat_hat/cat_sitting_hat_1_blue1.png';
-import catPinkHat from '/cat_hat/cat_sitting_hat_1_pink1.png';
-import catWhiteHat from '/cat_hat/cat_sitting_hat_2_white1.png';
-import catkerchief_purpleHat from '/cat_kerchief/cat_kerchief_1_purple1.png';
-import catkerchief_redHat from '/cat_kerchief/cat_kerchief_1_red1.png';
-import catkerchief_green_whiteHat from '/cat_kerchief/cat_kerchief_2_greenish_white1.png';
-import catkerchief_red_whiteHat from '/cat_kerchief/cat_kerchief_2_red_white1.png';
+import cat from '/Cat_talking/cat_talking_1.png';
+import catBlueHat from '/cat_hat2/cat_hat_1_blue1.png';
+import catPinkHat from '/cat_hat2/cat_hat_1_pink1.png';
+import catWhiteHat from '/cat_hat2/cat_hat_2_white1.png';
+import catkerchief_purpleHat from '/cat_kerchief2/cat_kerchief_1_purple1.png';
+import catkerchief_redHat from '/cat_kerchief2/cat_kerchief_1_red1.png';
+import catkerchief_green_whiteHat from '/cat_kerchief2/cat_kerchief_2_greenish_white1.png';
+import catkerchief_red_whiteHat from '/cat_kerchief2/cat_kerchief_2_red_white1.png';
 
 
 import dog from '/sitting/dog_sitting1.png';
