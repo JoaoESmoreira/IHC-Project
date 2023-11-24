@@ -31,9 +31,10 @@ import bath_icon from '/icons_background_removed/bath_icon.png';
 import food_icon from '/icons_background_removed/food_icon.png';
 import play_icon from '/icons_background_removed/play_icon.png';
 import read_icon from '/icons_background_removed/read_icon.png';
+import bowl from '/food_static/food_bowl1.png';
 
 export {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhiteHat, dog, blueHat, pinkHat, whiteHat, noHat, 
         kerchief_purpleHat, kerchief_redHat, kerchief_green_whiteHat, kerchief_red_whiteHat, 
         catkerchief_purpleHat, catkerchief_redHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat, 
         dogkerchief_purpleHat, dogkerchief_redHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
-        bath_icon, food_icon, play_icon, read_icon};
+        bath_icon, food_icon, play_icon, read_icon, bowl};

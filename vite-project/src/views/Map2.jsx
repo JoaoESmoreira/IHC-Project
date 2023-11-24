@@ -11,7 +11,7 @@ import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhi
     kerchief_purpleHat, kerchief_redHat, kerchief_green_whiteHat, kerchief_red_whiteHat, 
     catkerchief_purpleHat, catkerchief_redHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat, 
     dogkerchief_purpleHat, dogkerchief_redHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
-    bath_icon, food_icon, play_icon, read_icon} from '../constants/items'
+    bath_icon, food_icon, play_icon, read_icon, bowl} from '../constants/items'
 import './Map2.css'
 import './Rewards.css'
 
@@ -64,7 +64,7 @@ function isPetInCondition(pet, equippedRewards) {
 }
 
 
-function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption}) {
+function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex}) {
 
     if (selectedOption === '') {
         // Replace '/start' with the actual route to your Start view
@@ -78,7 +78,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const auditoriumCoordinates = [40.186373, -8.412231];
     const civilCoordinates = [40.185357, -8.415305];
     const chemistryCoordinates = [40.186373, -8.417735];
-    const mechanicCoordinates = [40.184472, -8.412236];
+    const mechanicCoordinates = [40.185310, -8.413336];
     const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
         civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates];
     const messages = ["Eu preciso de estudar!", "Eu preciso de tomar banho!",  "Eu tenho fome!", "Eu queria jogar à bola!",
@@ -90,6 +90,8 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 catBlueHat, catkerchief_purpleHat, catPinkHat, catkerchief_redHat, catWhiteHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat];
     const DogequipedReward = [dog, dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
                                 dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat];
+    
+    const order = [0,1,2,3,1,0,4,3,0,5,4,0,6,5,4,7,1,2,3,1,0,4,3,0,5,4,0,6,5,4,7];
 
     const [needs, setNeeds]                           = useState(0);
     const [position, setPosition]                     = useState([40.186156,-8.416319]);
@@ -308,13 +310,33 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         }
     }, [position]);
 
-    // update target to achieve
+    /* // update target to achieve
     useEffect(() => {
         var randomValue = randomNumber(0, availablePoints, targetIndex);
         setPreviousTargetIndex(targetIndex);
         setTargetIndex(randomValue);
         setNeeds(randomValue);
+    }, [level]); */
+
+    // Atualiza o índice de ordem em cada iteração
+    useEffect(() => {
+        setOrderIndex((prevIndex) => (prevIndex + 1) % order.length);
     }, [level]);
+
+    // Atualiza o índice de ordem quando o componente monta
+    useEffect(() => {
+        setOrderIndex(orderIndex);
+    }, []);
+
+    // ...
+
+    // Atualiza o índice do alvo com base na ordem
+    useEffect(() => {
+        const newTargetIndex = order[orderIndex];
+        setPreviousTargetIndex(targetIndex);
+        setTargetIndex(newTargetIndex);
+        setNeeds(newTargetIndex);
+    }, [orderIndex, level]);
 
     // equip item
     const handleClick = (key) => {
@@ -333,6 +355,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const handleClick3 = (key) => {
         setNewRewardAvailable(false);
         setShowPopup(false);
+        
     };
 
     const cutImageStyle1 = {
@@ -366,55 +389,6 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
             //<GPS setPosition={setPosition} />
             }
 
-            
-
-            {/* {
-                newTargetAvailable && (
-                    <Popup trigger={true} setPopup={setNewTargetAvailable}>
-                        <div className="popup-content">
-                        <h1>Um novo ponto de interesse!</h1>
-                        </div>
-                        <MapViewer className="map-container" 
-                                    position={position} 
-                                    availablePoints={availablePoints} 
-                                    interestPoints={interestPoints} 
-                                    targetIndex={availablePoints-1} 
-                                    isPopup={true}
-                                    pet={pet}
-                                    zoom={16}
-                                    />
-                    </Popup>
-                )
-            }
-            {
-                newRewardAvailable && (
-                    <Popup trigger={true} setPopup={setNewRewardAvailable}>
-                        <div className="popup-content">
-                            <h1>Parabéns!!</h1>
-                            <p>Um novo Chapéu!</p>
-                            <img src={rewardsVector[numberRewards-1]} alt="reward" />
-                            <button
-                                style={{
-                                    backgroundColor: 'rgb(255, 165, 0)',
-                                    color: 'white',
-                                    borderRadius: '10px',
-                                    padding: '10px 20px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    marginTop: '30px', // Adiciona espaço entre os botões
-                                    width: 'fit-content',
-                                    alignSelf: 'center',
-                            }}       
-                            onClick={() => handleClick(numberRewards)}                    
-                            >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
-
-                            </button>
-                        </div>
-                    </Popup>
-                )
-            } */}
-
                 {
                 newTargetAvailable && (
                     <>
@@ -433,10 +407,18 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <CatAnimation frames={catAnimationFramesShower} width={300} height={215} />
                                 ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
-                                    <div>
-                                        <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
-                                        <img src={pet} alt="reward" style={petImageStyle} />
-                                </div>
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <img src={bowl} alt="reward"  style={{width: '300px', height: '215px'}}/>
+                                        </div>
+                                    </div>
                                 ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
                                     <div style={{ position: 'relative' }}>
 
@@ -500,10 +482,18 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
                                 ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
-                                    <div>
-                                        <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
-                                        <img src={pet} alt="reward" style={petImageStyle} />
-                                </div>
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <img src={bowl} alt="reward"  style={{width: '300px', height: '215px'}}/>
+                                        </div>
+                                    </div>
                                 ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
                                     <div style={{ position: 'relative' }}>
 
@@ -620,10 +610,18 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <CatAnimation frames={catAnimationFramesShower} width={300} height={215} />
                                 ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
-                                    <div>
-                                        <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
-                                        <img src={pet} alt="reward" style={petImageStyle} />
-                                </div>
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <CatAnimation frames={catAnimationFramesEat} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <img src={bowl} alt="reward"  style={{width: '300px', height: '215px'}}/>
+                                        </div>
+                                    </div>
                                 ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
                                     <div style={{ position: 'relative' }}>
 
@@ -686,10 +684,18 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
                                 ) : previousTargetIndex === 2 || previousTargetIndex === 4 ? (
-                                    <div>
-                                        <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
-                                        <img src={pet} alt="reward" style={petImageStyle} />
-                                </div>
+                                    <div style={{ position: 'relative' }}>
+
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <DogAnimation frames={dogAnimationFramesEat} width={300} height={215} />
+                                        </div>
+                                        <div style={{marginTop: '220px' }}>
+                                            <img src={pet} alt="reward" style={petImageStyle} />
+                                        </div>
+                                        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+                                            <img src={bowl} alt="reward"  style={{width: '300px', height: '215px'}}/>
+                                        </div>
+                                    </div>
                                 ) : previousTargetIndex === 0 || previousTargetIndex === 7 ? (
                                     <div style={{ position: 'relative' }}>
 

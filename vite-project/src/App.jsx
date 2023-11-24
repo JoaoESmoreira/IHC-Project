@@ -18,8 +18,8 @@ function App() {
     const [animalName, setAnimalName] = useState('');
     const [petImage, setPetImage] = useState(null);
     const [level, setLevel] = useState(0);
-    const [availablePoints, setAvailablePoints] = useState(2);
- 
+    const [availablePoints, setAvailablePoints] = useState(3);
+    const [orderIndex, setOrderIndex] = useState(0);
 
     return (
         <>
@@ -87,6 +87,8 @@ function App() {
                         pet={petImage}
                         setPet={setPetImage}
                         selectedOption={selectedOption}
+                        orderIndex={orderIndex}
+                        setOrderIndex={setOrderIndex}
                         />
 
                     </Route>
