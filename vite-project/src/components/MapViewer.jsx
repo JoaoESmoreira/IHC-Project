@@ -13,6 +13,7 @@ import {bath_icon, food_icon, play_icon, read_icon} from '../constants/items'
 
 import './MapViewer.css'
 
+
 function ResetLocation({position}) {
     const map = useMap();
     if (map) {

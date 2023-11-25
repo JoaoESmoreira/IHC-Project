@@ -9,7 +9,6 @@ import {
 import {React, useEffect, useRef} from "react";
 
 
-
 function ResetLocation({position}) {
     const map = useMap();
     if (map) {

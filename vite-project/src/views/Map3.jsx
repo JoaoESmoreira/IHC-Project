@@ -12,7 +12,7 @@ import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhi
     catkerchief_purpleHat, catkerchief_redHat, catkerchief_green_whiteHat, catkerchief_red_whiteHat, 
     dogkerchief_purpleHat, dogkerchief_redHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat,
     bath_icon, food_icon, play_icon, read_icon, bowl} from '../constants/items'
-import './Map2.css'
+import './Map3.css'
 import './Rewards.css'
 
 import BackToHomeButton from '../components/BackToHomeButton4';
@@ -45,7 +45,7 @@ function IsClose(position1, position2) {
     /**
      * Returns true if position1 is next to position2, false otherwise.
      */
-    return EuclidianDistance(position1, position2) <= 0.00009;
+    return EuclidianDistance(position1, position2) <= 0.00015;
 }
 
 function randomNumber(min, max, excludeValue) {
@@ -66,7 +66,7 @@ function isPetInCondition(pet, equippedRewards) {
 }
 
 
-function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex}) {
+function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex}) {
 
     const [giftAudio] = useState(new Audio(giftSound));
     const [clickAudio] = useState(new Audio(clickSound));
@@ -76,16 +76,27 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
         window.location.replace('/');
       }
 
-    const deiCoordinates = [40.186390, -8.416174];
+ /*    const deiCoordinates = [40.186390, -8.416174];
     const cantineCoordinates = [40.186296, -8.413942];
     const deecCoordinates = [40.186648, -8.416426];
     const residenceCoordinates = [40.186816, -8.414771];
     const auditoriumCoordinates = [40.186373, -8.412231];
     const civilCoordinates = [40.185357, -8.415305];
     const chemistryCoordinates = [40.186373, -8.417735];
-    const mechanicCoordinates = [40.185310, -8.413336];
-    const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
-        civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates];
+    const mechanicCoordinates = [40.185310, -8.413336]; */
+    const local1 = [40.194856, -8.411819];
+    const local2 = [40.195156, -8.410919];
+    const local3 = [40.194956, -8.411320];
+    const local4 = [40.195486, -8.409719];
+    const local5 = [40.195856, -8.408519];
+    const local6 = [40.195926, -8.407319];
+    
+    const local7 = [40.196006, -8.404719];
+    const local8 = [40.196226, -8.403519];
+
+    /* const interestPoints = [deiCoordinates, deecCoordinates, cantineCoordinates, residenceCoordinates, 
+        civilCoordinates, chemistryCoordinates, mechanicCoordinates, auditoriumCoordinates]; */
+    const interestPoints = [local1, local2, local3, local4, local5, local6, local7, local8];   
     const messages = ["Eu preciso de estudar!", "Eu preciso de tomar banho!",  "Eu tenho fome!", "Eu queria jogar à bola!",
                     "Eu tenho fome!", "Eu preciso de tomar banho!", "Eu queria jogar à bola!", "Eu preciso de estudar!"];
     const iconsMap = [read_icon, bath_icon, food_icon, play_icon, food_icon, bath_icon, play_icon, read_icon];
@@ -97,9 +108,10 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                 dogBlueHat, dogkerchief_purpleHat, dogPinkHat, dogkerchief_redHat, dogWhiteHat, dogkerchief_green_whiteHat, dogkerchief_red_whiteHat];
     
     const order = [0,2,1,3,1,0,4,3,0,5,4,0,6,5,4,7,1,2,3,1,0,4,3,0,5,4,0,6,5,4,7];
+    /* const order = [0,1,2,3,4,5,6,7]; */
 
     const [needs, setNeeds]                           = useState(0);
-    const [position, setPosition]                     = useState([40.186156,-8.416319]);
+    const [position, setPosition]                     = useState([40.194756, -8.412319]);
     const [targetIndex, setTargetIndex]               = useState(0);
     const [previousTargetIndex, setPreviousTargetIndex] = useState(null);
     const [newTargetAvailable, setNewTargetAvailable] = useState(false);
@@ -865,4 +877,4 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     )
 }
 
-export default Map2;
+export default Map3;

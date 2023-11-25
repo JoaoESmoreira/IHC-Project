@@ -9,7 +9,7 @@ import catkerchief_green_whiteHat from '/cat_kerchief2/cat_kerchief_2_greenish_w
 import catkerchief_red_whiteHat from '/cat_kerchief2/cat_kerchief_2_red_white1.png';
 
 
-import dog from '/sitting/dog_sitting1.png';
+import dog from '/dog_talking/dog_talking_1.png';
 import dogBlueHat from '/dog_hat/dog_sitting_hat_1_blue1.png';
 import dogPinkHat from '/dog_hat/dog_sitting_hat_1_pink1.png';
 import dogWhiteHat from '/dog_hat/dog_sitting_hat_2_white1.png';

@@ -7,6 +7,7 @@ import Start2 from './views/Start2';
 import Menu from './views/Menu';
 import Map from './views/Map';
 import Map2 from './views/Map2';
+import Map3 from './views/Map3';
 import Rewards from './views/Rewards';
 import Home3 from './views/Home3';
 import './App.css'
@@ -78,6 +79,23 @@ function App() {
                     <Route path='/map2'>
 
                         <Map2 numberRewards={numberRewards} 
+                        setNumberRewards={setNumberRewards} 
+                        level={level}
+                        setLevel={setLevel}
+                        availablePoints={availablePoints}
+                        setAvailablePoints={setAvailablePoints}
+                        pet={petImage}
+                        setPet={setPetImage}
+                        selectedOption={selectedOption}
+                        orderIndex={orderIndex}
+                        setOrderIndex={setOrderIndex}
+                        />
+
+                    </Route>
+
+                    <Route path='/map3'>
+
+                        <Map3 numberRewards={numberRewards} 
                         setNumberRewards={setNumberRewards} 
                         level={level}
                         setLevel={setLevel}

@@ -17,7 +17,7 @@ function Menu({ selectedOption, animalName }) {
       clickAudio.play();
       // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
       setTimeout(() => {
-        history.push('/map2');
+        history.push('/map3');
       }, 300); // Ajuste o valor do atraso conforme necessário
     };
 
