@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
+import clickSound from '/music/sound_button.mp3';
+
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
@@ -12,6 +14,7 @@ import BackToHomeButton2 from '../components/BackToHomeButton2';
 function Start2({selectedOption, animalName, setAnimalName, setPet}) {
 
     const history = useHistory();
+    const [clickAudio] = useState(new Audio(clickSound));
 
     // useEffect(() => {
     //    if (selectedOption === '') {
@@ -25,6 +28,15 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
     //        }
     //    }
     // }, [selectedOption]);
+
+    const handleButtonClick = () => {
+        // Reproduzir o som de clique
+        clickAudio.play();
+        // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
+        setTimeout(() => {
+          history.push('/menu');
+        }, 300); // Ajuste o valor do atraso conforme necessário
+      };
 
     const dogAnimationFrames = [
         '/dog_talking/dog_talking_1.png',
@@ -117,11 +129,10 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                     marginTop: '30px', // Adiciona espaço entre os botões
                 }}
             >
-                <Link
-                    to={`/menu`}
+                <Link to="#" onClick={handleButtonClick}
                     style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}
                 >
-                    <h1>Continuar</h1>
+                    <h1 >Continuar</h1>
                 </Link>
             </button>
             )}

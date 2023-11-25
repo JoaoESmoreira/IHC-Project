@@ -3,11 +3,24 @@ import React, { useState } from 'react';
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
+
+import clickSound from '/music/sound_button.mp3';
 
 function Logo({selectedOption, animalName}) {
       const isDataValid = selectedOption !== '' && animalName !== '';
+      const [clickAudio] = useState(new Audio(clickSound));
+      const history = useHistory();
+      
 
+      const handleButtonClick = () => {
+        // Reproduzir o som de clique
+        clickAudio.play();
+        // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
+        setTimeout(() => {
+          history.push(isDataValid ? '/menu' : '/start');
+        }, 300); // Ajuste o valor do atraso conforme necessário
+      };
 
       const dogAnimationFrames = [
         '/dog_tilting/dog_tilting_1.png',
@@ -64,8 +77,9 @@ function Logo({selectedOption, animalName}) {
           </div>
           
           <div>
-            <Link to={isDataValid ? '/menu' : '/start'} style={{ textDecoration: 'none' }}>
+            <Link to="#" onClick={handleButtonClick}>
             <button
+              onClick={handleButtonClick}
               style={{
                 backgroundColor: 'rgb(255, 165, 0)',
                 color: 'white',

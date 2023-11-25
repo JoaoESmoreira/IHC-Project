@@ -11,7 +11,6 @@ import Rewards from './views/Rewards';
 import Home3 from './views/Home3';
 import './App.css'
 
-
 function App() {
     const [numberRewards, setNumberRewards] = useState(0);
     const [selectedOption, setSelectedOption] = useState('');
@@ -103,6 +102,7 @@ function App() {
                         <Home3 />
                     </Route>
                 </Switch>
+
             </Router>
         </>
     );

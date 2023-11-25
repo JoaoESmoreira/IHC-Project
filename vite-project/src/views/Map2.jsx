@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react'
+import React,{ useState, useEffect } from 'react'
 
 import MapViewer from '../components/MapViewer';
 import MapViewer2 from '../components/MapViewer2';
@@ -15,13 +15,15 @@ import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhi
 import './Map2.css'
 import './Rewards.css'
 
-import BackToMenuButton from '../components/BackToMenuButton';
+import BackToHomeButton from '../components/BackToHomeButton4';
 import SpeechBubble from '../components/SpeechBubble';
 
 
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
+import giftSound from '/music/sound_gift.mp3';
+import clickSound from '/music/sound_button.mp3';
 
 function EuclidianDistance(position1, position2) {
     /**
@@ -65,6 +67,9 @@ function isPetInCondition(pet, equippedRewards) {
 
 
 function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex}) {
+
+    const [giftAudio] = useState(new Audio(giftSound));
+    const [clickAudio] = useState(new Audio(clickSound));
 
     if (selectedOption === '') {
         // Replace '/start' with the actual route to your Start view
@@ -303,9 +308,11 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
             if ((level+1)%3 === 0) {
                 setAvailablePoints(availablePoints + 1);
                 setNewTargetAvailable(true);
+                giftAudio.play();
             } else {
                 setNumberRewards(numberRewards + 1);
                 setNewRewardAvailable(true);
+                giftAudio.play();
             }
         }
     }, [position]);
@@ -340,22 +347,30 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
 
     // equip item
     const handleClick = (key) => {
-        if (selectedOption === 'gato') {
-            setPet(CatequipedReward[key]);
-        } else if (selectedOption === 'cão') {
-            setPet(DogequipedReward[key]);
-        }
-        setNewRewardAvailable(false);
-        setShowPopup(false);
+        clickAudio.play();
+        setTimeout(() => {
+            if (selectedOption === 'gato') {
+                setPet(CatequipedReward[key]);
+            } else if (selectedOption === 'cão') {
+                setPet(DogequipedReward[key]);
+            }
+            setNewRewardAvailable(false);
+            setShowPopup(false);
+          }, 300);        
     };
     const handleClick2 = (key) => {
-        setNewTargetAvailable(false);
-        setShowPopup(false);
+        clickAudio.play();
+        setTimeout(() => {
+            setNewTargetAvailable(false);
+            setShowPopup(false);
+          }, 300);
     };
     const handleClick3 = (key) => {
-        setNewRewardAvailable(false);
-        setShowPopup(false);
-        
+        clickAudio.play();
+        setTimeout(() => {
+            setNewRewardAvailable(false);
+            setShowPopup(false); 
+          }, 300);    
     };
 
     const cutImageStyle1 = {
@@ -380,7 +395,7 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
     return(
         <div className='Map' >
             <div>
-            <BackToMenuButton />
+            <BackToHomeButton />
             {/* Conteúdo da sua view */}
             </div>
             
@@ -392,7 +407,6 @@ function Map2({numberRewards, setNumberRewards, level, setLevel, availablePoints
                 {
                 newTargetAvailable && (
                     <>
-                    
                     <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
                     <MapViewer2 className="map-container"
                         position={position} 

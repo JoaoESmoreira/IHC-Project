@@ -6,17 +6,29 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 import {cat,  dog} from '../constants/items'
 
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
+
+import clickSound from '/music/sound_button.mp3';
 
 import BackToHomeButton from '../components/BackToHomeButton';
 
 
 function Start({selectedOption, setSelectedOption, setPet}) {
-
+    const [clickAudio] = useState(new Audio(clickSound));
+    const history = useHistory();
 
     const handleOptionChange = (option) => {
         setSelectedOption(option);
         option === 'cão' ? setPet(dog) : setPet(cat);
+    };
+
+    const handleButtonClick = () => {
+      // Reproduzir o som de clique
+      clickAudio.play();
+      // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
+      setTimeout(() => {
+        history.push('/start2');
+      }, 300); // Ajuste o valor do atraso conforme necessário
     };
 
       const dogAnimationFrames = [
@@ -70,7 +82,7 @@ function Start({selectedOption, setSelectedOption, setPet}) {
           </div>
 
           <div>
-            <Link to="/start2">
+            <Link to="#" onClick={handleButtonClick}>
               <button
                 style={{
                   backgroundColor: 'rgba(255,100,0,0.2)', 
@@ -87,7 +99,7 @@ function Start({selectedOption, setSelectedOption, setPet}) {
             </Link>
           </div>
           <div>
-            <Link to="/start2">
+              <Link to="#" onClick={handleButtonClick}>
               <button
                 style={{
                   backgroundColor: 'rgba(255,100,0,0.2)',

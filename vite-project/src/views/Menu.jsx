@@ -1,12 +1,34 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link ,useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
+import clickSound from '/music/sound_button.mp3';
+
 import BackToHomeButton3 from '../components/BackToHomeButton3';
 
 function Menu({ selectedOption, animalName }) {
+    const [clickAudio] = useState(new Audio(clickSound));
+    const history = useHistory();
+
+    const handleButtonClick1 = () => {
+      // Reproduzir o som de clique
+      clickAudio.play();
+      // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
+      setTimeout(() => {
+        history.push('/map2');
+      }, 300); // Ajuste o valor do atraso conforme necessário
+    };
+
+    const handleButtonClick2 = () => {
+      // Reproduzir o som de clique
+      clickAudio.play();
+      // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
+      setTimeout(() => {
+        history.push('/rewards');
+      }, 300); // Ajuste o valor do atraso conforme necessário
+    };
 
     if (selectedOption === '' || animalName === '') {
         // Replace '/start' with the actual route to your Start view
@@ -118,7 +140,7 @@ function Menu({ selectedOption, animalName }) {
           <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Menu</h1>
       
           <div>
-            <Link to={`/map2`} style={{ textDecoration: 'none' }}>
+            <Link to="#" onClick={handleButtonClick1} style={{ textDecoration: 'none' }}>
               <button
                 style={{
                   border: '10px solid rgb(255, 165, 0)',
@@ -156,7 +178,7 @@ function Menu({ selectedOption, animalName }) {
           </div>
       
           <div>
-            <Link to={`/rewards`} style={{ textDecoration: 'none' }}>
+            <Link to="#" onClick={handleButtonClick2} style={{ textDecoration: 'none' }}>
               <button
                 style={{
                   border: '10px solid rgb(255, 165, 0)',

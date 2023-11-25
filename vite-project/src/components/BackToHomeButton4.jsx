@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import buttonback from "/ButtonBack/buttonback.png"
 import clickSound from '/music/sound_button.mp3';
 
-const BackToHomeButton = () => {
+const BackToHomeButton4 = () => {
   const [clickAudio] = useState(new Audio(clickSound));
   const history = useHistory();
 
@@ -12,7 +12,7 @@ const BackToHomeButton = () => {
         clickAudio.play();
         // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
         setTimeout(() => {
-          history.push('/');
+          history.push('/menu');
         }, 300); // Ajuste o valor do atraso conforme necessário
       };
   return (
@@ -25,4 +25,4 @@ const BackToHomeButton = () => {
   );
 };
 
-export default BackToHomeButton;
+export default BackToHomeButton4;
