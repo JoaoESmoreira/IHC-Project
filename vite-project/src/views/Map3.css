@@ -6,3 +6,8 @@ h1, p {
 .map-container {
     position: relative;
 }
+
+.fixed-scrollbar {
+    overflow: hidden;
+  }
+  

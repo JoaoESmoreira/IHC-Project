@@ -12,6 +12,9 @@ const SpeechBubble = ({ message }) => {
         borderRadius: '10px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
         maxWidth: '200px', // Defina o valor desejado para a largura máxima
+        fontFamily: 'Archivo, sans-serif',
+        color: '#754c24',
+        textAlign: 'center',
       }}
     >
       <p style={{ margin: '0' }}>{message}</p>

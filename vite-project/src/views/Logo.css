@@ -1,0 +1,21 @@
+.fixed-scrollbar {
+    overflow: hidden;
+    }
+  
+  /* Adicione um estilo para a barra de rolagem fixa no topo */
+  
+  
+  /* Estilo personalizado para a barra de rolagem */
+  .fixed-scrollbar::-webkit-scrollbar {
+    width: 12px; /* ajuste conforme necessário */
+  }
+  
+  .fixed-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888; /* ou qualquer cor desejada */
+    border-radius: 6px;
+  }
+  
+  .fixed-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent; /* ou qualquer cor desejada */
+  }
+

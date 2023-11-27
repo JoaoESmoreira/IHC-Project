@@ -25,6 +25,8 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 import giftSound from '/music/sound_gift.mp3';
 import clickSound from '/music/sound_button.mp3';
 
+import Footer from '../components/Footer';
+
 function EuclidianDistance(position1, position2) {
     /**
      * Returns the euclidian distance.
@@ -47,6 +49,12 @@ function IsClose(position1, position2) {
      */
     return EuclidianDistance(position1, position2) <= 0.00015;
 }
+function distancia_pontos(position1, position2) {
+    /**
+     * Returns true if position1 is next to position2, false otherwise.
+     */
+    return EuclidianDistance(position1, position2);
+}
 
 function randomNumber(min, max, excludeValue) {
     /**
@@ -66,7 +74,7 @@ function isPetInCondition(pet, equippedRewards) {
 }
 
 
-function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex}) {
+function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints, setAvailablePoints, pet, setPet, selectedOption, orderIndex, setOrderIndex,distanciaTotal, setDistanciaTotal}) {
 
     const [giftAudio] = useState(new Audio(giftSound));
     const [clickAudio] = useState(new Audio(clickSound));
@@ -90,7 +98,6 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const local4 = [40.195486, -8.409719];
     const local5 = [40.195856, -8.408519];
     const local6 = [40.195926, -8.407319];
-    
     const local7 = [40.196006, -8.404719];
     const local8 = [40.196226, -8.403519];
 
@@ -117,6 +124,10 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
     const [newTargetAvailable, setNewTargetAvailable] = useState(false);
     const [newRewardAvailable, setNewRewardAvailable] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+
+    
+    const [distanciasEntrePontos, setDistanciasEntrePontos] = useState(0);
+    //const [distanciaTotal, setDistanciaTotal] = useState(0);
 
     const dogAnimationFrames = [
         '/dog_talking/dog_talking_1.png',
@@ -309,7 +320,10 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
         '/ball_animation/ball_animation_16.png',
         '/ball_animation/ball_animation_17.png',
       ];
-
+    
+    useEffect(() => {
+        console.log('Distância total percorrida:', distanciaTotal);
+    }, [distanciaTotal]);
 
     // ckeck if the person is next to target
     useEffect(() => {
@@ -326,6 +340,14 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                 setNewRewardAvailable(true);
                 giftAudio.play();
             }
+
+            const distanciaEntrePontos = distancia_pontos(interestPoints[previousTargetIndex], interestPoints[targetIndex]);
+
+            setDistanciasEntrePontos(distanciaEntrePontos);
+            setDistanciaTotal(distanciaTotal + distanciaEntrePontos);
+
+            console.log('Distância entre pontos:', distanciaEntrePontos);
+            //console.log('Distância total percorrida:', distanciaTotal);
         }
     }, [position]);
 
@@ -403,10 +425,11 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
       const petImageStyle = isPetInCondition(pet, selectedOption === 'gato' ? CatequipedReward : DogequipedReward)
         ? cutImageStyle1
         : cutImageStyle2;
-        
+    
+    
         
     return(
-        <div className='Map' >
+        <div className='fixed-scrollbar'>
             <div>
             <BackToHomeButton />
             {/* Conteúdo da sua view */}
@@ -416,10 +439,11 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
             // Uncomment to get current position
             //<GPS setPosition={setPosition} />
             }
+            {/* <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px',fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>{(distanciaTotal*111000).toFixed(0)} metros</h1> */}
                 {
                 newTargetAvailable && (
                     <>
-                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
+                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px',fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>Mapa</h1>
                     <MapViewer2 className="map-container"
                         position={position} 
                         pet={pet}
@@ -427,7 +451,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         />
 
                     {selectedOption === 'gato' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
 
                                 {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
@@ -491,7 +515,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     left : '-30px',
                                     width: 'fit-content',
                                     alignSelf: 'center',
-                                    marginLeft: '-70px',
+                                    marginLeft: '-60px',
                                     clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
                                     }}
                                 onClick={() => setShowPopup(true)}
@@ -503,7 +527,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     )}
 
                     {selectedOption === 'cão' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
                             {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
@@ -565,7 +589,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     left : '-30px',
                                     width: 'fit-content',
                                     alignSelf: 'center',
-                                    marginLeft: '-70px',
+                                    marginLeft: '-60px',
                                     clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
                                     }}
                                 onClick={() => setShowPopup(true)}
@@ -583,7 +607,8 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     {showPopup && (
                         <Popup trigger={true} setPopup={() => {setShowPopup(false); setPresentClicked(false);}}>
                         <div className="popup-content">
-                            <h1>Um novo ponto de interesse!</h1>
+                            {/* <h1>Um novo ponto de interesse!</h1> */}
+                            <h1 style={{ textDecoration: 'none', color: '#754c24', fontSize: '30px', fontFamily: 'Archivo, sans-serif'  }}>Um novo ponto de interesse!</h1>
                         </div>
                         <MapViewer
                             className="map-container"
@@ -613,7 +638,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         }} 
                             onClick={() => handleClick2(numberRewards)}
                         >
-                            <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }}>Ok</h1>
+                            <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontFamily: 'Archivo, sans-serif' }}>Ok</h1>
                         </button>
                         </Popup>
                     )}
@@ -623,7 +648,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
             {
                 newRewardAvailable && (
                     <>
-                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
+                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px',fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>Mapa</h1>
                     <MapViewer2 className="map-container"
                         position={position} 
                         pet={pet}
@@ -631,7 +656,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         />
 
                     {selectedOption === 'gato' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
                             {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <CatAnimation frames={catAnimationFramesShower} width={300} height={215} />
@@ -693,7 +718,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     left : '-30px',
                                     width: 'fit-content',
                                     alignSelf: 'center',
-                                    marginLeft: '-70px',
+                                    marginLeft: '-60px',
                                     clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
                                     }}
                                 onClick={() => setShowPopup(true)}
@@ -705,7 +730,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     )}
 
                     {selectedOption === 'cão' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
                              {previousTargetIndex === 1 || previousTargetIndex === 5 ? (
                                     /* Renderizar a animação correspondente ao targetIndex 1 ou 5 */
                                     <DogAnimation frames={dogAnimationFramesShower} width={300} height={215} />
@@ -767,7 +792,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     left : '-30px',
                                     width: 'fit-content',
                                     alignSelf: 'center',
-                                    marginLeft: '-70px',
+                                    marginLeft: '-60px',
                                     clipPath: 'polygon(0% 100%, 80% 100%, 80% 0%, 0% 0%)',
                                     }}
                                 onClick={() => setShowPopup(true)}
@@ -784,9 +809,26 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     {showPopup && (
                     <Popup trigger={true} setPopup={() => {setShowPopup(false); setPresentClicked(false);}}>
                         <div className="popup-content">
-                            <h1>Parabéns!!</h1>
-                            <p>Um novo acessório!</p>
+                            <h1 style={{ textDecoration: 'none', color: '#754c24', fontSize: '35px', fontFamily: 'Archivo, sans-serif'  }}>Parabéns!!</h1>
+                            <h1 style={{ textDecoration: 'none', color: '#754c24', fontSize: '24px', fontFamily: 'Archivo, sans-serif'  }}>Um novo acessório!</h1>
                             <img src={rewardsVector[numberRewards-1]} alt="reward" />
+                            <button
+                                style={{
+                                    backgroundColor: 'rgb(255, 165, 0)',
+                                    color: 'white',
+                                    borderRadius: '10px',
+                                    padding: '10px 42px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    marginTop: '30px', // Adiciona espaço entre os botões
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                            }}       
+                            onClick={() => handleClick(numberRewards)}                    
+                            >
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontFamily: 'Archivo, sans-serif'  }}>Equipar</h1>
+
+                            </button>
                             <button
                                 style={{
                                     backgroundColor: 'rgb(255, 165, 0)',
@@ -799,26 +841,9 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                                     width: 'fit-content',
                                     alignSelf: 'center',
                             }}       
-                            onClick={() => handleClick(numberRewards)}                    
-                            >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
-
-                            </button>
-                            <button
-                                style={{
-                                    backgroundColor: 'rgb(255, 165, 0)',
-                                    color: 'white',
-                                    borderRadius: '10px',
-                                    padding: '5px 10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    marginTop: '30px', // Adiciona espaço entre os botões
-                                    width: 'fit-content',
-                                    alignSelf: 'center',
-                            }}       
                             onClick={() => handleClick3(numberRewards)}                    
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}>Não Equipar</h1>
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px', fontFamily: 'Archivo, sans-serif'  }}>Não Equipar</h1>
 
                             </button>
                         </div>
@@ -830,7 +855,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
             
             {(!newTargetAvailable && !newRewardAvailable) && (
                 <>
-                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Mapa</h1>
+                    <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px',fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>Mapa</h1>
                     <MapViewer className="map-container"
                         position={position} 
                         availablePoints={availablePoints} 
@@ -843,7 +868,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         zoom={16}
                         />
                     {selectedOption === 'gato' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
                             <div>
                                 <CatAnimation frames={catAnimationFrames} width={300} height={215} />
                                 <img src={pet} alt="reward" style={petImageStyle} />
@@ -855,7 +880,7 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                     )}
 
                     {selectedOption === 'cão' && (
-                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -70px' }}>
+                        <div style={{ display: 'flex', marginTop: '10px', width: '350px', height: '250px', margin: '0 -60px' }}>
                             <div>
                                 <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
                                 <img src={pet} alt="reward" style={petImageStyle} />
@@ -866,12 +891,12 @@ function Map3({numberRewards, setNumberRewards, level, setLevel, availablePoints
                         </div>
                     )}
 
-                    <Move setPosition={setPosition} />
+                    {<Move setPosition={setPosition} />}
                 </>
             )}
 
             
-
+            <Footer distanciaTotal={distanciaTotal} />
             
         </div>
     )

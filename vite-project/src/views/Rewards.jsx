@@ -12,7 +12,9 @@ import {catBlueHat, catPinkHat, catWhiteHat, cat, dogBlueHat, dogPinkHat, dogWhi
 import BackToHomeButton from '../components/BackToHomeButton4';
 import clickSound from '/music/sound_button.mp3';
 
-function Rewards({rewards,pet, setPet, selectedOption}) {
+import Footer from '../components/Footer';
+
+function Rewards({rewards,pet, setPet, selectedOption, distanciaTotal}) {
 
     if (selectedOption === '') {
         // Replace '/start' with the actual route to your Start view
@@ -61,7 +63,7 @@ function Rewards({rewards,pet, setPet, selectedOption}) {
             <div>
             <BackToHomeButton />
             </div>
-            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px' }}>Personalizar</h1>
+            <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px' , fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>Personalizar</h1>
                 <div className="pet">
                     <img src= {pet} alt="pet" />
                 </div>
@@ -81,16 +83,18 @@ function Rewards({rewards,pet, setPet, selectedOption}) {
                                     marginTop: '30px', // Adiciona espaço entre os botões
                                     width: 'fit-content',
                                     alignSelf: 'center',
+                                    marginBottom: '50px',
                             }}       
                             onClick={() => handleClick(index)}                    
                             >
-                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '20px'  }}>Equipar</h1>
+                                <h1 style={{ textDecoration: 'none', color: 'white', fontSize: '24px', fontFamily: 'Archivo, sans-serif'}}>Equipar</h1>
 
                             </button>
                         </div>
                     )).slice(0,rewards+1)
                 }
             </Carousel>
+            <Footer distanciaTotal={distanciaTotal} />
         </div>
     );
 }

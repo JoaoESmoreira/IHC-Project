@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './Logo.css'
 
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
@@ -7,18 +8,23 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-r
 
 import clickSound from '/music/sound_button.mp3';
 
-function Logo({selectedOption, animalName}) {
+import logo from '/logotipo/logotipo.png';
+
+import Footer from '../components/Footer';
+
+
+function Logo({selectedOption, animalName, distanciaTotal}) {
       const isDataValid = selectedOption !== '' && animalName !== '';
       const [clickAudio] = useState(new Audio(clickSound));
       const history = useHistory();
-      
-
+        
       const handleButtonClick = () => {
         // Reproduzir o som de clique
         clickAudio.play();
+        document.documentElement.requestFullscreen();
         // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
         setTimeout(() => {
-          history.push(isDataValid ? '/menu' : '/start');
+          history.push(isDataValid ? '/menu' : '/intro');
         }, 300); // Ajuste o valor do atraso conforme necessário
       };
 
@@ -59,9 +65,12 @@ function Logo({selectedOption, animalName}) {
       ];
 
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh'}}>
+        <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+          <div>
+          <img src={logo} alt="reward" width={350} height={379} style={{marginTop: '50px'}}/>
+          </div>
           
-          <h1 style={{ fontSize: '35px' , marginTop: '50px'}}>Pata-Caminhada</h1>
+          {/* <h1 style={{ fontSize: '35px' , marginTop: '50px'}}>Pata-Caminhada</h1>
           <div style={{ position: 'relative', marginTop: '40px' }}>
             {(
               <div style={{ position: 'relative', top: 0, left: -75 }}>
@@ -74,7 +83,7 @@ function Logo({selectedOption, animalName}) {
                 <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
               </div>
             )}
-          </div>
+          </div> */}
           
           <div>
             <Link to="#" onClick={handleButtonClick}>
@@ -90,10 +99,11 @@ function Logo({selectedOption, animalName}) {
                 marginTop: '110px', // Adiciona espaço entre os botões
               }}
               >
-                <h1>Clique para iniciar</h1>
+                <h1 style={{fontSize: '24px',fontFamily: 'Archivo, sans-serif'}}>Clique para iniciar</h1>
             </button>
             </Link>
           </div>
+          {isDataValid && <Footer distanciaTotal={distanciaTotal} />}
         </div>
       );
 }

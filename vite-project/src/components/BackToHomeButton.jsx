@@ -12,7 +12,7 @@ const BackToHomeButton = () => {
         clickAudio.play();
         // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
         setTimeout(() => {
-          history.push('/');
+          history.push('/intro');
         }, 300); // Ajuste o valor do atraso conforme necessário
       };
   return (

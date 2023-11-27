@@ -8,7 +8,9 @@ import clickSound from '/music/sound_button.mp3';
 
 import BackToHomeButton3 from '../components/BackToHomeButton3';
 
-function Menu({ selectedOption, animalName }) {
+import Footer from '../components/Footer';
+
+function Menu({ selectedOption, animalName ,distanciaTotal}) {
     const [clickAudio] = useState(new Audio(clickSound));
     const history = useHistory();
 
@@ -133,11 +135,19 @@ function Menu({ selectedOption, animalName }) {
       ];
 
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
           <div style={{  zIndex: '999' }}>
             <BackToHomeButton3 />
           </div>
-          <h1 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginTop:'30px'}}>Menu</h1>
+          <h1 style={{ display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          fontSize: '28px', 
+          marginTop:'20px', 
+          fontFamily: 'Archivo, sans-serif',
+          color: '#754c24'
+          }}>Menu</h1>
       
           <div>
             <Link to="#" onClick={handleButtonClick1} style={{ textDecoration: 'none' }}>
@@ -157,10 +167,10 @@ function Menu({ selectedOption, animalName }) {
               >
                 <div style={{ marginBottom: '10px' }}>
                   {selectedOption === 'gato' && (
-                    <CatAnimation frames={catAnimationFrames} width={300} height={215} />
+                    <CatAnimation frames={catAnimationFrames} width={270} height={193} />
                   )}
                   {selectedOption === 'cão' && (
-                    <DogAnimation frames={dogAnimationFrames} width={300} height={215} />
+                    <DogAnimation frames={dogAnimationFrames} width={270} height={193} />
                   )}
                 </div>
       
@@ -171,7 +181,7 @@ function Menu({ selectedOption, animalName }) {
                     textAlign: 'center',
                   }}
                 >
-                  <h1>Caminhar com <br /> {animalName}</h1>
+                  <h1 style={{ fontSize: '21px', fontFamily: 'Archivo, sans-serif', color: '#754c24'}}>Caminhar com<br /> {animalName}</h1>
                 </span>
               </button>
             </Link>
@@ -191,14 +201,15 @@ function Menu({ selectedOption, animalName }) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  marginBottom: '100px',
                 }}
               >
                 <div style={{ marginBottom: '10px' }}>
                   {selectedOption === 'gato' && (
-                    <CatAnimation frames={catAnimationFrames2} width={300} height={215} />
+                    <CatAnimation frames={catAnimationFrames2} width={270} height={193} />
                   )}
                   {selectedOption === 'cão' && (
-                    <DogAnimation frames={dogAnimationFrames2} width={300} height={215} />
+                    <DogAnimation frames={dogAnimationFrames2} width={270} height={193} />
                   )}
                 </div>
       
@@ -209,11 +220,12 @@ function Menu({ selectedOption, animalName }) {
                     textAlign: 'center',
                   }}
                 >
-                  <h1>Personalizar<br /> {animalName}</h1>
+                  <h1 style={{ fontSize: '21px', fontFamily: 'Archivo, sans-serif', color: '#754c24'}}>Personalizar<br /> {animalName}</h1>
                 </span>
               </button>
             </Link>
           </div>
+          <Footer distanciaTotal={distanciaTotal} />
         </div>
       );
     }

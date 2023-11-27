@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Logo from './views/Logo';
+import Intro from './views/Intro';
 import Start from './views/Start';
 import Start2 from './views/Start2';
 import Menu from './views/Menu';
@@ -20,6 +21,7 @@ function App() {
     const [level, setLevel] = useState(0);
     const [availablePoints, setAvailablePoints] = useState(3);
     const [orderIndex, setOrderIndex] = useState(0);
+    const [distanciaTotal, setDistanciaTotal] = useState(0);
 
     return (
         <>
@@ -37,7 +39,15 @@ function App() {
                     path="/"
                     exact
                     render={(props) => (
-                    <Logo {...props} selectedOption={selectedOption} animalName= {animalName} />
+                    <Logo {...props} selectedOption={selectedOption} animalName= {animalName} distanciaTotal={distanciaTotal}/>
+                    )}
+                    />
+
+                    <Route
+                    path="/intro"
+                    exact
+                    render={(props) => (
+                    <Intro {...props} selectedOption={selectedOption} animalName= {animalName} />
                     )}
                     />
 
@@ -57,7 +67,7 @@ function App() {
                     <Route
                     path="/menu"
                     render={(props) => (
-                    <Menu {...props} selectedOption={selectedOption}  animalName= {animalName} />
+                    <Menu {...props} selectedOption={selectedOption}  animalName= {animalName} distanciaTotal={distanciaTotal}/>
                     )}
                     />
 
@@ -106,13 +116,15 @@ function App() {
                         selectedOption={selectedOption}
                         orderIndex={orderIndex}
                         setOrderIndex={setOrderIndex}
+                        distanciaTotal={distanciaTotal}
+                        setDistanciaTotal={setDistanciaTotal}
                         />
 
                     </Route>
 
                     <Route path='/rewards'>
 
-                        <Rewards rewards={numberRewards} pet= {petImage} setPet={setPetImage} selectedOption={selectedOption} />
+                        <Rewards rewards={numberRewards} pet= {petImage} setPet={setPetImage} selectedOption={selectedOption} distanciaTotal={distanciaTotal} />
 
                     </Route>
 

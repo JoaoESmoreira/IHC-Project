@@ -6,18 +6,13 @@ import clickSound from '/music/sound_button.mp3';
 import DogAnimation from '../DogAnimation'; // Importar o novo componente
 import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
-import BackToHomeButton2 from '../components/BackToHomeButton2';
+import BackToHomeButton5 from '../components/BackToHomeButton5';
+
 
 // import cat from '/Cat_tilting_color/cat_tilting_1.png';
 // import dog from '/dog_tilting/dog_tilting_1.png';
 
-function Start2({selectedOption, animalName, setAnimalName, setPet}) {
-
-    if (selectedOption === '') {
-        // Replace '/start' with the actual route to your Start view
-        window.location.replace('/');
-      }
-    else{
+function Intro({selectedOption, animalName, setAnimalName, setPet}) {
 
     const history = useHistory();
     const [clickAudio] = useState(new Audio(clickSound));
@@ -40,7 +35,7 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
         clickAudio.play();
         // Adicione um pequeno atraso antes de redirecionar para garantir que o áudio tenha tempo de começar
         setTimeout(() => {
-          history.push('/menu');
+          history.push('/start');
         }, 300); // Ajuste o valor do atraso conforme necessário
       };
 
@@ -92,40 +87,23 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
             <div>
-                <BackToHomeButton2 />
+                <BackToHomeButton5 />
             </div>
 
-            {selectedOption === 'gato' && (
-                <div style={{ marginTop: '70px' }}>
-                    <CatAnimation frames={catAnimationFrames} width={350} height={250} />
-                </div>
-            )}
-            {selectedOption === 'cão' && (
-                <div style={{ marginTop: '70px' }}>
-                    <DogAnimation frames={dogAnimationFrames} width={350} height={250} />
-                </div>
-            )}
-            <div style={{ textAlign: 'center', fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>
-                <h1 style={{ fontSize: '24px', marginTop: '20px' }}>O nome do {selectedOption}:</h1>
-            </div>
-            {/* <h1 style={{ fontSize: '22px',marginTop: '20px'}}>O nome do {selectedOption}:</h1> */}
-            <input
-                type="text"
-                value={animalName}
-                onChange={handleNameChange}
-                onKeyDown={handleKeyDown}
-                style={{ 
-                    height: '40px', 
-                    fontSize: '20px', 
-                    backgroundColor: 'transparent',
-                    marginTop: '20px', 
-                    border: '5px solid rgb(255, 165, 0)',
-                    borderRadius: '5px',
-                    boxShadow: '0 0 5px rgba(255, 100, 0, 0.5)',
-                }} // Ajuste a altura e o tamanho da fonte conforme necessário
-            />
+            <h1 style={{ marginTop: '100px', textDecoration: 'none', color: '#754c24', fontSize: '34px', fontFamily: 'Archivo, sans-serif' , textAlign: 'center' }}>
+            Bem-vindo Jogador! 
+            </h1>
+            <h1 style={{ marginTop: '50px', textDecoration: 'none', color: '#754c24', fontSize: '25px', fontFamily: 'Archivo, sans-serif' , textAlign: 'center' }}>
+            Neste jogo poderá ter o seu animal preferido.
+            </h1>
+            <h1 style={{ marginTop: '30px', textDecoration: 'none', color: '#754c24', fontSize: '25px', fontFamily: 'Archivo, sans-serif' , textAlign: 'center' }}>
+            Caminhe com ele para cuidar das suas necessidades.
+            </h1>
+            <h1 style={{ marginTop: '30px', textDecoration: 'none', color: '#754c24', fontSize: '25px', fontFamily: 'Archivo, sans-serif' , textAlign: 'center' }}>
+            Personalize-o com acessórios ganhos.
+            </h1>
+            
 
-            {animalName && (
             <button
                 style={{
                     backgroundColor: 'rgb(255, 165, 0)',
@@ -134,19 +112,18 @@ function Start2({selectedOption, animalName, setAnimalName, setPet}) {
                     padding: '10px',
                     border: 'none',
                     cursor: 'pointer',
-                    marginTop: '30px', // Adiciona espaço entre os botões
+                    marginTop: '80px', // Adiciona espaço entre os botões
                 }}
             >
                 <Link to="#" onClick={handleButtonClick}
-                    style={{ textDecoration: 'none', color: 'white', fontSize: '15px'  }}
+                    style={{textDecoration: 'none', color: 'white', fontSize: '15px'  }}
                 >
                     <h1 style={{ fontSize: '24px', fontFamily: 'Archivo, sans-serif'}}>Continuar</h1>
                 </Link>
             </button>
-            )}
+            
         </div>
     );
-    }
 }
 
-export default Start2;
+export default Intro;

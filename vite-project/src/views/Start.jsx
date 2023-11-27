@@ -5,7 +5,7 @@ import CatAnimation from '../CatAnimation'; // Importar o novo componente
 
 import {cat,  dog} from '../constants/items'
 
-
+import './Logo.css'
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
 
 import clickSound from '/music/sound_button.mp3';
@@ -72,13 +72,13 @@ function Start({selectedOption, setSelectedOption, setPet}) {
       ];
 
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
           <div>
             <BackToHomeButton />
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '24px', marginTop: '70px'}}>Escolha entre cão ou gato:</h1>
+          <div style={{ textAlign: 'center', fontFamily: 'Archivo, sans-serif' , color: '#754c24'}}>
+            <h1 style={{ fontSize: '24px', marginTop: '70px' }}>Escolha Cão ou Gato:</h1>
           </div>
 
           <div>

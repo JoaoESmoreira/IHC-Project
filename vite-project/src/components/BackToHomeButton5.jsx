@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import buttonback from "/ButtonBack/buttonmenu.png"
+import buttonback from "/ButtonBack/buttonback.png"
 import clickSound from '/music/sound_button.mp3';
 
-const BackToHomeButton3 = () => {
+const BackToHomeButton5 = () => {
   const [clickAudio] = useState(new Audio(clickSound));
   const history = useHistory();
-  
+
   const handleButtonClick = () => {
         // Reproduzir o som de clique
         clickAudio.play();
@@ -25,4 +25,4 @@ const BackToHomeButton3 = () => {
   );
 };
 
-export default BackToHomeButton3;
+export default BackToHomeButton5;
